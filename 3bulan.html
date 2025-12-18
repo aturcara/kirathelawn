@@ -1481,7 +1481,36 @@
 
         // Load saved area on page load
         window.addEventListener('DOMContentLoaded', () => {
-            // First, check if there's a saved calculation to restore
+            // PRIORITY 1: Check if area data was passed from map measurement (OVERRIDE EVERYTHING)
+            const mapArea = localStorage.getItem('thelawn_mapArea');
+            
+            if (mapArea) {
+                // Parse and validate the map area
+                const areaValue = parseFloat(mapArea);
+
+                if (!isNaN(areaValue) && areaValue >= 100) {
+                    // Use map area if available (highest priority - will override saved calculation)
+                    const formattedArea = formatNumber(areaValue.toFixed(2));
+                    document.getElementById('lawnArea').value = formattedArea;
+
+                    // Hide hint since we have a value
+                    document.getElementById('mapHint').classList.add('hidden');
+
+                    // Clear old saved calculation since we have new map data
+                    localStorage.removeItem('thelawn_calculation_3bulan');
+
+                    // Auto-calculate after a brief delay to ensure DOM is ready
+                    setTimeout(() => {
+                        calculate();
+                    }, 100);
+                }
+
+                // Clear the mapArea after using it so it doesn't auto-run next time
+                localStorage.removeItem('thelawn_mapArea');
+                return; // Exit early since we used map area
+            }
+            
+            // PRIORITY 2: Check if there's a saved calculation to restore
             const savedCalculation = localStorage.getItem('thelawn_calculation_3bulan');
             
             if (savedCalculation) {
@@ -1512,32 +1541,9 @@
                 }
             }
             
-            // If no saved calculation, check if area data was passed from map measurement
-            const mapArea = localStorage.getItem('thelawn_mapArea');
+            // PRIORITY 3: Use previously saved manual input (lowest priority)
             const saved = localStorage.getItem('thelawn_lawnArea_3month');
-
-            if (mapArea) {
-                // Parse and validate the map area
-                const areaValue = parseFloat(mapArea);
-
-                if (!isNaN(areaValue) && areaValue >= 100) {
-                    // Use map area if available (priority)
-                    const formattedArea = formatNumber(areaValue.toFixed(2));
-                    document.getElementById('lawnArea').value = formattedArea;
-
-                    // Hide hint since we have a value
-                    document.getElementById('mapHint').classList.add('hidden');
-
-                    // Auto-calculate after a brief delay to ensure DOM is ready
-                    setTimeout(() => {
-                        calculate();
-                    }, 100);
-                }
-
-                // Clear the mapArea after using it so it doesn't auto-run next time
-                localStorage.removeItem('thelawn_mapArea');
-            } else if (saved) {
-                // Otherwise use previously saved manual input
+            if (saved) {
                 const savedValue = parseFloat(saved);
                 if (!isNaN(savedValue)) {
                     const formattedSaved = formatNumber(savedValue.toFixed(2));
