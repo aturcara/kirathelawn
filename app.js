@@ -214,9 +214,36 @@ function updateUI() {
         // Auto-fill the area in calculators
         document.getElementById('yourArea').value = areaSqft.toFixed(2);
         document.getElementById('sandArea').value = areaSqft.toFixed(2);
+
+        // Save area to localStorage for 3bulan page
+        localStorage.setItem('thelawn_mapArea', areaSqft.toFixed(2));
+
+        // Get location data from center of polygon
+        const centerLat = latlngs.reduce((sum, ll) => sum + ll.lat, 0) / latlngs.length;
+        const centerLng = latlngs.reduce((sum, ll) => sum + ll.lng, 0) / latlngs.length;
+
+        // Reverse geocode to get location details
+        fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${centerLat}&lon=${centerLng}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data && data.address) {
+                    const address = data.address;
+                    const city = address.city || address.town || address.village || address.county || '';
+                    const state = address.state || '';
+                    const postalCode = address.postcode || '';
+
+                    // Save to localStorage
+                    localStorage.setItem('thelawn_city', city);
+                    localStorage.setItem('thelawn_state', state);
+                    localStorage.setItem('thelawn_postalCode', postalCode);
+                }
+            })
+            .catch(err => console.log('Geocoding error:', err));
     } else {
         document.getElementById('areaDisplay').style.display = 'none';
         document.getElementById('emptyState').style.display = 'block';
+        // Clear saved area if no polygon
+        localStorage.removeItem('thelawn_mapArea');
     }
 
     // Save to cache after UI update

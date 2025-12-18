@@ -680,6 +680,156 @@
             margin-top: 2rem;
             font-size: 0.875rem;
         }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-content {
+            position: relative;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: transparent;
+            border: none;
+            color: #6b7280;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .modal-close:hover {
+            background: #f3f4f6;
+            color: #111827;
+        }
+
+        .modal-close svg {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+        .modal-content h2 {
+            color: #111827;
+            font-size: 1.5rem;
+            margin: 0 0 0.5rem 0;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #374151;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+            color: #111827;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #047857;
+            box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .submit-button {
+            width: 100%;
+            background: linear-gradient(135deg, #00bf5d 0%, #047857 100%);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 191, 93, 0.3);
+        }
+
+        .submit-button:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 640px) {
+            .modal-content {
+                padding: 1.5rem;
+            }
+
+            .modal-content h2 {
+                font-size: 1.25rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -798,9 +948,9 @@
                 </ul>
             </div>
 
-            <a href="https://wa.me/601121888274" class="cta-button" target="_blank">
+            <button class="cta-button" onclick="showOrderForm()">
                 📱 Order Sekarang via WhatsApp
-            </a>
+            </button>
         </div>
     </main>
 
@@ -810,6 +960,37 @@
             <path d="m18 15-6-6-6 6"/>
         </svg>
     </button>
+
+    <!-- Order Form Modal -->
+    <div id="orderModal" class="modal">
+        <div class="modal-overlay" onclick="closeOrderForm()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeOrderForm()" aria-label="Close">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 6L6 18M6 6l12 12"/>
+                </svg>
+            </button>
+            <h2>Maklumat Pelanggan</h2>
+            <p style="color: #6b7280; margin-bottom: 1.5rem;">Sila isi maklumat anda untuk meneruskan pesanan</p>
+            <form id="orderForm" onsubmit="submitOrder(event)">
+                <div class="form-group">
+                    <label for="customerName">Nama Penuh <span style="color: #ef4444;">*</span></label>
+                    <input type="text" id="customerName" name="customerName" required placeholder="Nama anda">
+                </div>
+                <div class="form-group">
+                    <label for="customerPhone">No. Telefon <span style="color: #ef4444;">*</span></label>
+                    <input type="tel" id="customerPhone" name="customerPhone" required placeholder="Contoh: 0123456789">
+                </div>
+                <div class="form-group">
+                    <label for="customerAddress">Alamat <span style="color: #ef4444;">*</span></label>
+                    <textarea id="customerAddress" name="customerAddress" rows="3" required placeholder="Alamat penuh untuk penghantaran"></textarea>
+                </div>
+                <button type="submit" class="submit-button">
+                    📱 Hantar ke WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -1022,7 +1203,13 @@
             return { products: results, total: total };
         }
 
+        // Store calculation results globally for order form
+        let currentCalculation = null;
+
         function displayResults(area, results) {
+            // Store results for later use in order form
+            currentCalculation = { area, results };
+
             document.getElementById('displayArea').textContent = area.toFixed(0);
 
             const productList = document.getElementById('productList');
@@ -1046,9 +1233,52 @@
             });
 
             document.getElementById('totalPrice').textContent = 'RM ' + results.total.toFixed(2);
+        }
 
-            // Generate WhatsApp message
-            let whatsappMessage = `*Set Penjagaan Laman 3 Bulan*\n\n`;
+        // Show order form modal
+        function showOrderForm() {
+            if (!currentCalculation) {
+                alert('Sila kira pakej anda terlebih dahulu');
+                return;
+            }
+            document.getElementById('orderModal').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close order form modal
+        function closeOrderForm() {
+            document.getElementById('orderModal').classList.remove('show');
+            document.body.style.overflow = '';
+            // Clear form
+            document.getElementById('orderForm').reset();
+        }
+
+        // Submit order form
+        function submitOrder(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('customerName').value.trim();
+            const phone = document.getElementById('customerPhone').value.trim();
+            const address = document.getElementById('customerAddress').value.trim();
+
+            if (!name || !phone || !address) {
+                alert('Sila isi semua maklumat');
+                return;
+            }
+
+            if (!currentCalculation) {
+                alert('Sila kira pakej anda terlebih dahulu');
+                return;
+            }
+
+            const { area, results } = currentCalculation;
+
+            // Generate WhatsApp message with customer info
+            let whatsappMessage = `*SAYA NAK SET PENJAGAAN LAMAN 3 BULAN*\n\n`;
+            whatsappMessage += `*Maklumat Pelanggan:*\n`;
+            whatsappMessage += `Nama: ${name}\n`;
+            whatsappMessage += `No Telefon: ${phone}\n`;
+            whatsappMessage += `Alamat: ${address}\n\n`;
             whatsappMessage += `Saiz laman saya: *${area.toFixed(0)} sqft*\n\n`;
             whatsappMessage += `*Senarai Produk:*\n`;
 
@@ -1061,16 +1291,30 @@
             whatsappMessage += `*Jumlah Keseluruhan: RM${results.total.toFixed(2)}*\n`;
             whatsappMessage += `(Penghantaran percuma Semenanjung Malaysia)`;
 
-            // Update WhatsApp link
-            const whatsappLink = document.querySelector('.cta-button');
+            // Open WhatsApp with message
             const encodedMessage = encodeURIComponent(whatsappMessage);
-            whatsappLink.href = `https://wa.me/601121888274?text=${encodedMessage}`;
+            const whatsappUrl = `https://wa.me/601121888274?text=${encodedMessage}`;
+            window.open(whatsappUrl, '_blank');
+
+            // Close modal
+            closeOrderForm();
         }
 
         // Load saved area on page load
         window.addEventListener('DOMContentLoaded', () => {
+            // Check if area data was passed from map measurement
+            const mapArea = localStorage.getItem('thelawn_mapArea');
             const saved = localStorage.getItem('thelawn_lawnArea_3month');
-            if (saved) {
+
+            if (mapArea) {
+                // Use map area if available (priority)
+                document.getElementById('lawnArea').value = mapArea;
+                // Auto-calculate if we have map area
+                calculate();
+                // Clear the mapArea after using it so it doesn't auto-run next time
+                localStorage.removeItem('thelawn_mapArea');
+            } else if (saved) {
+                // Otherwise use previously saved manual input
                 document.getElementById('lawnArea').value = saved;
             }
         });
