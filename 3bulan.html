@@ -415,6 +415,22 @@
             transform: translateY(1px);
         }
 
+        .btn-clear {
+            background: #6b7280;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-clear:hover {
+            background: #4b5563;
+        }
+
+        .btn-clear svg {
+            flex-shrink: 0;
+        }
+
         /* Results Section */
         .results {
             display: none;
@@ -835,6 +851,18 @@
             min-height: 80px;
         }
 
+        .auto-filled {
+            background-color: #f0fdf4;
+            border-color: #86efac;
+        }
+
+        .auto-filled-label {
+            color: #059669;
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+            display: block;
+        }
+
         .submit-button {
             width: 100%;
             background: linear-gradient(135deg, #00bf5d 0%, #047857 100%);
@@ -959,7 +987,16 @@
                     <span>Tidak tahu keluasan laman? Gunakan <a href="/">Kalkulator Peta</a> kami untuk ukur laman anda!</span>
                 </div>
             </div>
-            <button class="btn btn-primary" onclick="calculate()">Kira Pakej Saya</button>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <button class="btn btn-clear" onclick="clearCalculation()" title="Reset / Clear" style="width: 48px; padding: 0.75rem 0.5rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 6h18"></path>
+                        <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                        <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                    </svg>
+                </button>
+                <button class="btn btn-primary" onclick="calculate()" style="flex: 1;">Kira Pakej Saya</button>
+            </div>
         </div>
 
         <!-- Results -->
@@ -1014,8 +1051,8 @@
                     <path d="M18 6L6 18M6 6l12 12"/>
                 </svg>
             </button>
-            <h2>Maklumat Pelanggan</h2>
-            <p style="color: #6b7280; margin-bottom: 1.5rem;">Sila isi maklumat anda untuk meneruskan pesanan</p>
+            <h2>Maklumat Penghantaran</h2>
+            <p style="color: #6b7280; margin-bottom: 1.5rem;">Kami mudahkan kerja anda. Bandar, poskod dan negeri akan diisi secara automatik jika anda menggunakan <a href="/">Kalkulator Peta</a>.</p>
             <form id="orderForm" onsubmit="submitOrder(event)">
                 <div class="form-group">
                     <label for="customerName">Nama Penuh <span style="color: #ef4444;">*</span></label>
@@ -1026,8 +1063,24 @@
                     <input type="tel" id="customerPhone" name="customerPhone" required placeholder="Contoh: 0123456789">
                 </div>
                 <div class="form-group">
-                    <label for="customerAddress">Alamat <span style="color: #ef4444;">*</span></label>
-                    <textarea id="customerAddress" name="customerAddress" rows="3" required placeholder="Alamat penuh untuk penghantaran"></textarea>
+                    <label for="unitNumber">No. Unit / Rumah <span style="color: #ef4444;">*</span></label>
+                    <input type="text" id="unitNumber" name="unitNumber" required placeholder="Contoh: No. 123, Taman ABC">
+                </div>
+                <div class="form-group">
+                    <label for="streetAddress">Nama Jalan <span style="color: #ef4444;">*</span></label>
+                    <input type="text" id="streetAddress" name="streetAddress" required placeholder="Contoh: Jalan Melati 5/3">
+                </div>
+                <div class="form-group">
+                    <label for="customerCity">Bandar</label>
+                    <input type="text" id="customerCity" name="customerCity" placeholder="Bandar">
+                </div>
+                <div class="form-group">
+                    <label for="customerPostcode">Poskod</label>
+                    <input type="text" id="customerPostcode" name="customerPostcode" placeholder="Poskod">
+                </div>
+                <div class="form-group">
+                    <label for="customerState">Negeri</label>
+                    <input type="text" id="customerState" name="customerState" placeholder="Negeri">
                 </div>
                 <button type="submit" class="submit-button">
                     📱 Hantar ke WhatsApp
@@ -1156,6 +1209,26 @@
             }
         };
 
+        function clearCalculation() {
+            // Clear saved calculation
+            localStorage.removeItem('thelawn_calculation_3bulan');
+            
+            // Clear input
+            document.getElementById('lawnArea').value = '';
+            
+            // Hide results
+            document.getElementById('results').classList.remove('show');
+            
+            // Show hint again
+            document.getElementById('mapHint').classList.remove('hidden');
+            
+            // Clear current calculation
+            currentCalculation = null;
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
         function calculate() {
             // Remove commas from input before parsing
             const inputValue = document.getElementById('lawnArea').value.replace(/,/g, '').trim();
@@ -1268,9 +1341,14 @@
         // Store calculation results globally for order form
         let currentCalculation = null;
 
-        function displayResults(area, results) {
+        function displayResults(area, results, isRestored = false) {
             // Store results for later use in order form
             currentCalculation = { area, results };
+
+            // Save to localStorage for persistence (only if not restoring)
+            if (!isRestored) {
+                localStorage.setItem('thelawn_calculation_3bulan', JSON.stringify({ area, results }));
+            }
 
             document.getElementById('displayArea').textContent = formatNumber(area.toFixed(0));
 
@@ -1303,6 +1381,30 @@
                 alert('Sila kira pakej anda terlebih dahulu');
                 return;
             }
+            
+            // Load address data from localStorage (from leaflet map)
+            const savedCity = localStorage.getItem('thelawn_city');
+            const savedPostcode = localStorage.getItem('thelawn_postalCode');
+            const savedState = localStorage.getItem('thelawn_state');
+            
+            // Pre-populate city, postcode, state if available
+            const cityField = document.getElementById('customerCity');
+            const postcodeField = document.getElementById('customerPostcode');
+            const stateField = document.getElementById('customerState');
+            
+            if (savedCity) {
+                cityField.value = savedCity;
+                cityField.classList.add('auto-filled');
+            }
+            if (savedPostcode) {
+                postcodeField.value = savedPostcode;
+                postcodeField.classList.add('auto-filled');
+            }
+            if (savedState) {
+                stateField.value = savedState;
+                stateField.classList.add('auto-filled');
+            }
+            
             document.getElementById('orderModal').classList.add('show');
             document.body.style.overflow = 'hidden';
         }
@@ -1313,6 +1415,10 @@
             document.body.style.overflow = '';
             // Clear form
             document.getElementById('orderForm').reset();
+            // Remove auto-filled styling
+            document.getElementById('customerCity').classList.remove('auto-filled');
+            document.getElementById('customerPostcode').classList.remove('auto-filled');
+            document.getElementById('customerState').classList.remove('auto-filled');
         }
 
         // Submit order form
@@ -1321,10 +1427,14 @@
 
             const name = document.getElementById('customerName').value.trim();
             const phone = document.getElementById('customerPhone').value.trim();
-            const address = document.getElementById('customerAddress').value.trim();
+            const unitNumber = document.getElementById('unitNumber').value.trim();
+            const streetAddress = document.getElementById('streetAddress').value.trim();
+            const city = document.getElementById('customerCity').value.trim();
+            const postcode = document.getElementById('customerPostcode').value.trim();
+            const state = document.getElementById('customerState').value.trim();
 
-            if (!name || !phone || !address) {
-                alert('Sila isi semua maklumat');
+            if (!name || !phone || !unitNumber || !streetAddress) {
+                alert('Sila isi maklumat yang diperlukan (Nama, Telefon, No. Unit, Nama Jalan)');
                 return;
             }
 
@@ -1335,13 +1445,20 @@
 
             const { area, results } = currentCalculation;
 
+            // Construct full address
+            let fullAddress = unitNumber;
+            if (streetAddress) fullAddress += `, ${streetAddress}`;
+            if (city) fullAddress += `, ${city}`;
+            if (postcode) fullAddress += ` ${postcode}`;
+            if (state) fullAddress += `, ${state}`;
+
             // Generate WhatsApp message with customer info
-            let whatsappMessage = `*SAYA NAK SET PENJAGAAN LAMAN 3 BULAN*\n\n`;
-            whatsappMessage += `*Maklumat Pelanggan:*\n`;
+            let whatsappMessage = `*SET PENJAGAAN LAMAN 3 BULAN*\n\n`;
+            whatsappMessage += `*Maklumat Penghangtaran:*\n`;
             whatsappMessage += `Nama: ${name}\n`;
             whatsappMessage += `No Telefon: ${phone}\n`;
-            whatsappMessage += `Alamat: ${address}\n\n`;
-            whatsappMessage += `Saiz laman saya: *${formatNumber(area.toFixed(0))} sqft*\n\n`;
+            whatsappMessage += `Alamat: ${fullAddress}\n\n`;
+            whatsappMessage += `Saiz Laman: *${formatNumber(area.toFixed(0))} sqft*\n\n`;
             whatsappMessage += `*Senarai Produk:*\n`;
 
             results.products.forEach((product, index) => {
@@ -1364,7 +1481,38 @@
 
         // Load saved area on page load
         window.addEventListener('DOMContentLoaded', () => {
-            // Check if area data was passed from map measurement
+            // First, check if there's a saved calculation to restore
+            const savedCalculation = localStorage.getItem('thelawn_calculation_3bulan');
+            
+            if (savedCalculation) {
+                try {
+                    const data = JSON.parse(savedCalculation);
+                    if (data && data.area && data.results) {
+                        // Restore the input field
+                        const formattedArea = formatNumber(data.area.toFixed(2));
+                        document.getElementById('lawnArea').value = formattedArea;
+                        document.getElementById('mapHint').classList.add('hidden');
+                        
+                        // Restore the calculation results
+                        currentCalculation = data;
+                        displayResults(data.area, data.results, true); // Pass true for isRestored
+                        
+                        // Show results section
+                        document.getElementById('results').classList.add('show');
+                        
+                        // Scroll to results smoothly
+                        setTimeout(() => {
+                            document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }, 300);
+                        
+                        return; // Exit early if we restored saved calculation
+                    }
+                } catch (e) {
+                    console.error('Error restoring saved calculation:', e);
+                }
+            }
+            
+            // If no saved calculation, check if area data was passed from map measurement
             const mapArea = localStorage.getItem('thelawn_mapArea');
             const saved = localStorage.getItem('thelawn_lawnArea_3month');
 
@@ -1428,6 +1576,10 @@
             // Save raw value (without commas) to localStorage
             const rawValue = value.replace(/,/g, '');
             localStorage.setItem('thelawn_lawnArea_3month', rawValue);
+
+            // Clear saved calculation since user is changing the input
+            // They'll need to recalculate with the new value
+            localStorage.removeItem('thelawn_calculation_3bulan');
 
             // Hide the hint when user starts typing
             if (value) {

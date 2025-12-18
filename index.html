@@ -834,6 +834,29 @@
             transform: translateY(0);
         }
 
+        .location-info {
+            background: #f0fdf4;
+            border: 1px solid #86efac;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            margin-top: 1rem;
+            font-size: 0.75rem;
+            color: #166534;
+        }
+
+        .location-info-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .location-info p {
+            margin: 0.25rem 0;
+            font-size: 0.75rem;
+        }
+
         /* Navigation Bar */
         .nav-links {
             display: none;
@@ -1146,8 +1169,16 @@ body.menu-open {
                         <p>Click on the map to start measuring your lawn area</p>
                     </div>
 
+                    <div id="locationInfo" class="location-info" style="display: none;">
+                        <div class="location-info-title">📍 Lokasi Anda</div>
+                        <p><strong>Bandar:</strong> <span id="displayCity">-</span></p>
+                        <p><strong>Poskod:</strong> <span id="displayPostcode">-</span></p>
+                        <p><strong>Negeri:</strong> <span id="displayState">-</span></p>
+                        <p style="font-size: 0.625rem; margin-top: 0.5rem; opacity: 0.8;">✅ Data akan auto-isi di borang order</p>
+                    </div>
+
                     <a href="3bulan.html" class="sidebar-cta" id="ctaLink">
-                        👉 Dapatkan Set Lengkap Penjagaan 3 Bulan
+                        👉 Kira Produk<br>Set Penjagaan 3 Bulan
                     </a>
                 </div>
             </div>

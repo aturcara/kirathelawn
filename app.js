@@ -233,20 +233,47 @@ function updateUI() {
             .then(data => {
                 if (data && data.address) {
                     const address = data.address;
-                    const city = address.city || address.town || address.village || address.county || '';
+                    
+                    // Try multiple fields for city (for Malaysia addresses)
+                    const city = address.city || 
+                                 address.town || 
+                                 address.municipality || 
+                                 address.village || 
+                                 address.suburb ||
+                                 address.city_district ||
+                                 address.county || '';
+                    
                     const state = address.state || '';
                     const postalCode = address.postcode || '';
 
+                    // Debug log to see what we got
+                    console.log('Address data:', {
+                        city: city,
+                        state: state,
+                        postalCode: postalCode,
+                        fullAddress: address
+                    });
+
                     // Save to localStorage
-                    localStorage.setItem('thelawn_city', city);
-                    localStorage.setItem('thelawn_state', state);
-                    localStorage.setItem('thelawn_postalCode', postalCode);
+                    if (city) localStorage.setItem('thelawn_city', city);
+                    if (state) localStorage.setItem('thelawn_state', state);
+                    if (postalCode) localStorage.setItem('thelawn_postalCode', postalCode);
+
+                    // Update UI to show location info
+                    const locationDiv = document.getElementById('locationInfo');
+                    if (city || state || postalCode) {
+                        document.getElementById('displayCity').textContent = city || '-';
+                        document.getElementById('displayPostcode').textContent = postalCode || '-';
+                        document.getElementById('displayState').textContent = state || '-';
+                        locationDiv.style.display = 'block';
+                    }
                 }
             })
             .catch(err => console.log('Geocoding error:', err));
     } else {
         document.getElementById('areaDisplay').style.display = 'none';
         document.getElementById('emptyState').style.display = 'block';
+        document.getElementById('locationInfo').style.display = 'none';
         // Clear saved area if no polygon
         localStorage.removeItem('thelawn_mapArea');
     }
