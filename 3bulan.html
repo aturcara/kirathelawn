@@ -911,7 +911,7 @@
             <div class="form-group">
                 <label class="form-label">Keluasan Laman Anda</label>
                 <div class="input-wrapper">
-                    <input type="number" id="lawnArea" class="form-input" placeholder="Contoh: 1400" step="1" min="100">
+                    <input type="text" id="lawnArea" class="form-input" placeholder="Contoh: 1400" inputmode="numeric">
                     <span class="input-unit">sqft</span>
                 </div>
             </div>
@@ -1022,6 +1022,11 @@
     </footer>
 
     <script>
+        // Format number with thousand separator
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
         // Mobile menu toggle
         const menuToggle = document.getElementById('menuToggle');
         const mobileNav = document.getElementById('mobileNav');
@@ -1108,10 +1113,23 @@
         };
 
         function calculate() {
-            const area = parseFloat(document.getElementById('lawnArea').value);
+            // Remove commas from input before parsing
+            const inputValue = document.getElementById('lawnArea').value.replace(/,/g, '').trim();
+            const area = parseFloat(inputValue);
 
-            if (!area || area < 100) {
-                alert('Sila masukkan keluasan laman yang sah (minimum 100 sqft)');
+            // Better validation with more specific error messages
+            if (!inputValue) {
+                alert('Sila masukkan keluasan laman anda');
+                return;
+            }
+
+            if (isNaN(area)) {
+                alert('Sila masukkan nilai yang sah');
+                return;
+            }
+
+            if (area < 100) {
+                alert('Keluasan minimum adalah 100 sqft');
                 return;
             }
 
@@ -1210,7 +1228,7 @@
             // Store results for later use in order form
             currentCalculation = { area, results };
 
-            document.getElementById('displayArea').textContent = area.toFixed(0);
+            document.getElementById('displayArea').textContent = formatNumber(area.toFixed(0));
 
             const productList = document.getElementById('productList');
             productList.innerHTML = '';
@@ -1223,16 +1241,16 @@
                         <div class="product-name">${product.name}</div>
                         <div class="product-details">
                             <strong>${product.quantity}</strong> (${product.netWeight})<br>
-                            RM${product.unitPrice} per item × ${product.quantity.split(' ')[0]} = RM${product.price.toFixed(2)}<br>
+                            RM${formatNumber(product.unitPrice.toFixed(2))} per item × ${product.quantity.split(' ')[0]} = RM${formatNumber(product.price.toFixed(2))}<br>
                             <span style="color: #6b7280; font-size: 0.8125rem;">${product.details}</span>
                         </div>
                     </div>
-                    <div class="product-price">RM ${product.price.toFixed(2)}</div>
+                    <div class="product-price">RM ${formatNumber(product.price.toFixed(2))}</div>
                 `;
                 productList.appendChild(productItem);
             });
 
-            document.getElementById('totalPrice').textContent = 'RM ' + results.total.toFixed(2);
+            document.getElementById('totalPrice').textContent = 'RM ' + formatNumber(results.total.toFixed(2));
         }
 
         // Show order form modal
@@ -1279,16 +1297,16 @@
             whatsappMessage += `Nama: ${name}\n`;
             whatsappMessage += `No Telefon: ${phone}\n`;
             whatsappMessage += `Alamat: ${address}\n\n`;
-            whatsappMessage += `Saiz laman saya: *${area.toFixed(0)} sqft*\n\n`;
+            whatsappMessage += `Saiz laman saya: *${formatNumber(area.toFixed(0))} sqft*\n\n`;
             whatsappMessage += `*Senarai Produk:*\n`;
 
             results.products.forEach((product, index) => {
                 whatsappMessage += `${index + 1}. ${product.name}\n`;
                 whatsappMessage += `   • ${product.quantity} (${product.netWeight})\n`;
-                whatsappMessage += `   • RM${product.price.toFixed(2)}\n\n`;
+                whatsappMessage += `   • RM${formatNumber(product.price.toFixed(2))}\n\n`;
             });
 
-            whatsappMessage += `*Jumlah Keseluruhan: RM${results.total.toFixed(2)}*\n`;
+            whatsappMessage += `*Jumlah Keseluruhan: RM${formatNumber(results.total.toFixed(2))}*\n`;
             whatsappMessage += `(Penghantaran percuma Semenanjung Malaysia)`;
 
             // Open WhatsApp with message
@@ -1307,21 +1325,59 @@
             const saved = localStorage.getItem('thelawn_lawnArea_3month');
 
             if (mapArea) {
-                // Use map area if available (priority)
-                document.getElementById('lawnArea').value = mapArea;
-                // Auto-calculate if we have map area
-                calculate();
+                // Parse and validate the map area
+                const areaValue = parseFloat(mapArea);
+
+                if (!isNaN(areaValue) && areaValue >= 100) {
+                    // Use map area if available (priority)
+                    const formattedArea = formatNumber(areaValue.toFixed(2));
+                    document.getElementById('lawnArea').value = formattedArea;
+
+                    // Auto-calculate after a brief delay to ensure DOM is ready
+                    setTimeout(() => {
+                        calculate();
+                    }, 100);
+                }
+
                 // Clear the mapArea after using it so it doesn't auto-run next time
                 localStorage.removeItem('thelawn_mapArea');
             } else if (saved) {
                 // Otherwise use previously saved manual input
-                document.getElementById('lawnArea').value = saved;
+                const savedValue = parseFloat(saved);
+                if (!isNaN(savedValue)) {
+                    const formattedSaved = formatNumber(savedValue.toFixed(2));
+                    document.getElementById('lawnArea').value = formattedSaved;
+                }
             }
         });
 
-        // Save area to localStorage
+        // Save area to localStorage and format with commas
         document.getElementById('lawnArea').addEventListener('input', (e) => {
-            localStorage.setItem('thelawn_lawnArea_3month', e.target.value);
+            // Get the raw value without commas
+            let value = e.target.value.replace(/,/g, '');
+
+            // Only allow numbers and decimal point
+            value = value.replace(/[^\d.]/g, '');
+
+            // Prevent multiple decimal points
+            const parts = value.split('.');
+            if (parts.length > 2) {
+                value = parts[0] + '.' + parts.slice(1).join('');
+            }
+
+            // Format with thousand separator
+            if (value) {
+                const [integer, decimal] = value.split('.');
+                const formattedInteger = integer.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                value = decimal !== undefined ? formattedInteger + '.' + decimal : formattedInteger;
+            }
+
+            // Update the input value with formatted number
+            e.target.value = value;
+
+            // Save raw value (without commas) to localStorage
+            const rawValue = value.replace(/,/g, '');
+            localStorage.setItem('thelawn_lawnArea_3month', rawValue);
         });
 
         // Allow Enter key to calculate

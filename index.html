@@ -1396,14 +1396,12 @@ fields.forEach(id => {
 </script>
 <script>
 // Handle CTA link to pass area data to 3bulan page
+// Note: app.js already saves the raw numeric value to localStorage when updateUI() runs,
+// so we don't need to do anything here. The data is already stored without thousand separators.
+// This handler is kept for future enhancements if needed.
 document.getElementById('ctaLink').addEventListener('click', (e) => {
-    // Check if we have area measurement
-    const areaSqft = document.getElementById('areaSqft').textContent;
-    if (areaSqft && areaSqft !== '0') {
-        // Save the area to localStorage for 3bulan page to pick up
-        localStorage.setItem('thelawn_mapArea', areaSqft);
-    }
-    // Let the link navigate normally
+    // Data already saved to localStorage by app.js updateUI()
+    // Just let the link navigate normally
 });
 </script>
 

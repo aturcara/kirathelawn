@@ -83,6 +83,11 @@ map.on('click', (e) => {
     updateUI();
 });
 
+// Format number with thousand separator
+function formatNumber(num) {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 // Calculate area using the Shoelace formula
 function calculateArea(latlngs) {
     if (latlngs.length < 3) return 0;
@@ -133,8 +138,8 @@ function updatePolygon() {
 
         polygonLayer.bindPopup(`
             <strong>Area:</strong><br>
-            ${area.toFixed(2)} m²<br>
-            ${areaSqft.toFixed(2)} sqft
+            ${formatNumber(area.toFixed(2))} m²<br>
+            ${formatNumber(areaSqft.toFixed(2))} sqft
         `);
     }
 }
@@ -206,8 +211,8 @@ function updateUI() {
         const area = calculateArea(latlngs);
         const areaSqft = area * 10.7639;
 
-        document.getElementById('areaSqm').textContent = area.toFixed(2);
-        document.getElementById('areaSqft').textContent = areaSqft.toFixed(2);
+        document.getElementById('areaSqm').textContent = formatNumber(area.toFixed(2));
+        document.getElementById('areaSqft').textContent = formatNumber(areaSqft.toFixed(2));
         document.getElementById('areaDisplay').style.display = 'block';
         document.getElementById('emptyState').style.display = 'none';
 
