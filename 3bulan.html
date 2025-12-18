@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Penjagaan Laman 3 Bulan - TheLawn</title>
+    <meta name="description" content="Dapatkan set lengkap penjagaan laman untuk 3 bulan. Masukkan keluasan laman anda dan dapatkan cadangan produk dengan harga terbaik.">
+    <link rel="icon" type="image/svg+xml" href="https://thelawn.com.my/asset/svg/favicon.svg">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Set Penjagaan Laman 3 Bulan - TheLawn">
+    <meta property="og:description" content="Pakej lengkap penjagaan laman untuk 3 bulan dengan penghantaran percuma.">
+    <meta property="og:image" content="https://thelawn.com.my/asset/img/ogcalc.jpg">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            color: #111827;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .header-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            background: #059669;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            color: white;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #111827;
+        }
+
+        .logo-text .highlight {
+            color: #059669;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #059669;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: #6b7280;
+        }
+
+        @media (min-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Calculator Card */
+        .calculator-card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 0.75rem;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .form-input {
+            flex: 1;
+            padding: 1rem 1.25rem;
+            border: 2px solid #d1d5db;
+            border-radius: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #059669;
+            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+        }
+
+        .input-unit {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #6b7280;
+            min-width: 50px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: #059669;
+            color: white;
+            border: none;
+            border-radius: 0.75rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background: #047857;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        /* Results Section */
+        .results {
+            display: none;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .results.show {
+            display: block;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .results-header h2 {
+            font-size: 1.75rem;
+            color: #059669;
+            margin-bottom: 0.5rem;
+        }
+
+        .results-area {
+            font-size: 1.125rem;
+            color: #6b7280;
+        }
+
+        .product-list {
+            margin-bottom: 2rem;
+        }
+
+        .product-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            border: 1px solid #e5e7eb;
+            gap: 1rem;
+        }
+
+        .product-info {
+            flex: 1;
+        }
+
+        .product-name {
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 0.25rem;
+            font-size: 1.125rem;
+        }
+
+        .product-details {
+            font-size: 0.875rem;
+            color: #6b7280;
+            line-height: 1.5;
+        }
+
+        .product-price {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #059669;
+            white-space: nowrap;
+        }
+
+        .total-section {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .total-label {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .total-price {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .free-shipping {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+
+        .benefits {
+            background: #f0fdf4;
+            border: 2px solid #86efac;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .benefits h3 {
+            color: #059669;
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .benefits ul {
+            list-style: none;
+            color: #166534;
+        }
+
+        .benefits li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .benefits li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #059669;
+            font-weight: bold;
+        }
+
+        .cta-button {
+            width: 100%;
+            padding: 1.25rem 2rem;
+            background: #059669;
+            color: white;
+            border: none;
+            border-radius: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+
+        .cta-button:hover {
+            background: #047857;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(5, 150, 105, 0.3);
+        }
+
+        /* Info Box */
+        .info-box {
+            background: #dbeafe;
+            border: 1px solid #93c5fd;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-box h3 {
+            color: #1e40af;
+            margin-bottom: 0.75rem;
+            font-size: 1.125rem;
+        }
+
+        .info-box p {
+            color: #1e40af;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <a href="/" class="logo">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+                        <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+                    </svg>
+                </div>
+                <span class="logo-text">The<span class="highlight">Lawn</span></span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Hero -->
+        <div class="hero">
+            <h1>Set Penjagaan Laman 3 Bulan</h1>
+            <p>Masukkan keluasan laman anda dan dapatkan cadangan produk lengkap untuk 3 bulan</p>
+        </div>
+
+        <!-- Info Box -->
+        <div class="info-box">
+            <h3>🌱 Pakej Lengkap Penjagaan Laman</h3>
+            <p>Set ini termasuk baja, racun rumpai, dan foliar spray yang mencukupi untuk 3 bulan penjagaan laman anda. Penghantaran percuma ke Semenanjung Malaysia. Jadual aktiviti lawn care akan disediakan.</p>
+        </div>
+
+        <!-- Calculator -->
+        <div class="calculator-card">
+            <div class="form-group">
+                <label class="form-label">Keluasan Laman Anda</label>
+                <div class="input-wrapper">
+                    <input type="number" id="lawnArea" class="form-input" placeholder="Contoh: 1400" step="1" min="100">
+                    <span class="input-unit">sqft</span>
+                </div>
+            </div>
+            <button class="btn" onclick="calculate()">Kira Pakej Saya</button>
+        </div>
+
+        <!-- Results -->
+        <div class="results" id="results">
+            <div class="results-header">
+                <h2>Set Penjagaan 3 Bulan</h2>
+                <p class="results-area">Keluasan <strong id="displayArea">0</strong> sqft</p>
+            </div>
+
+            <div class="product-list" id="productList">
+                <!-- Products will be inserted here -->
+            </div>
+
+            <div class="total-section">
+                <div class="total-row">
+                    <span class="total-label">Jumlah:</span>
+                    <span class="total-price" id="totalPrice">RM 0.00</span>
+                </div>
+                <div class="free-shipping">✓ Penghantaran percuma Semenanjung Malaysia</div>
+            </div>
+
+            <div class="benefits">
+                <h3>🎁 Termasuk dalam pakej:</h3>
+                <ul>
+                    <li>Baja untuk 3 bulan (aplikasi sebulan sekali)</li>
+                    <li>Racun rumpai untuk 3 bulan</li>
+                    <li>3 jenis foliar spray (Essential Plus, Bio Nutriens, Dethatcher)</li>
+                    <li>Jadual aktiviti lawn care lengkap</li>
+                    <li>Sokongan pelanggan melalui WhatsApp</li>
+                </ul>
+            </div>
+
+            <a href="https://wa.me/601121888274" class="cta-button" target="_blank">
+                📱 Order Sekarang via WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 TheLawn. All rights reserved.</p>
+        <p style="margin-top: 0.5rem;">Perkhidmatan lanskap dan produk laman berkualiti tinggi.</p>
+    </footer>
+
+    <script>
+        // Product pricing and usage data
+        const products = {
+            baja: {
+                name: 'Baja Premium',
+                pricePerKg: 12.5, // RM25/2kg = RM12.5/kg
+                usageRate: 2, // 2g per sqft
+                months: 3
+            },
+            racun: {
+                name: 'Racun Rumpai',
+                price: 70,
+                bottleSize: 250, // ml
+                usageRate: 10, // 10ml per 400sqft
+                coveragePerBottle: 400 * (250 / 10) // sqft
+            },
+            essentialPlus: {
+                name: 'Foliar Essential Plus',
+                price: 45,
+                bottleSize: 250, // ml
+                usageRate: 90, // 90ml per 1000sqft
+                coveragePerBottle: 1000 * (250 / 90) // sqft
+            },
+            bioNutriens: {
+                name: 'Foliar Bio Nutriens',
+                price: 36,
+                packSize: 80, // gram
+                usageRate: 10, // 10g per 1000sqft
+                coveragePerPack: 1000 * (80 / 10) // sqft
+            },
+            dethatcher: {
+                name: 'Foliar Dethatcher',
+                price: 25,
+                packSize: 5, // gram
+                usageRate: 2.5, // 2.5g per 1000sqft
+                coveragePerPack: 1000 * (5 / 2.5) // sqft
+            }
+        };
+
+        function calculate() {
+            const area = parseFloat(document.getElementById('lawnArea').value);
+
+            if (!area || area < 100) {
+                alert('Sila masukkan keluasan laman yang sah (minimum 100 sqft)');
+                return;
+            }
+
+            // Calculate quantities needed
+            const results = calculateProducts(area);
+
+            // Display results
+            displayResults(area, results);
+
+            // Show results section
+            document.getElementById('results').classList.add('show');
+
+            // Scroll to results
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function calculateProducts(area) {
+            const results = [];
+            let total = 0;
+
+            // 1. Baja calculation
+            const bajaPerMonth = (area * products.baja.usageRate) / 1000; // kg per month
+            const bajaTotal = bajaPerMonth * products.baja.months;
+            const bajaPrice = bajaTotal * products.baja.pricePerKg;
+
+            results.push({
+                name: products.baja.name,
+                quantity: bajaTotal.toFixed(1) + 'kg',
+                details: `${bajaPerMonth.toFixed(1)}kg sebulan x 3 bulan`,
+                price: bajaPrice
+            });
+            total += bajaPrice;
+
+            // 2. Racun Rumpai calculation
+            const racunBottlesNeeded = Math.ceil(area / products.racun.coveragePerBottle * 3); // for 3 months
+            const racunPrice = racunBottlesNeeded * products.racun.price;
+
+            results.push({
+                name: products.racun.name,
+                quantity: racunBottlesNeeded + ' botol',
+                details: 'Cover 3 bulan',
+                price: racunPrice
+            });
+            total += racunPrice;
+
+            // 3. Essential Plus calculation
+            const essentialBottlesNeeded = Math.ceil(area / products.essentialPlus.coveragePerBottle * 3);
+            const essentialPrice = essentialBottlesNeeded * products.essentialPlus.price;
+
+            results.push({
+                name: products.essentialPlus.name,
+                quantity: essentialBottlesNeeded + ' botol',
+                details: 'Cover 3 bulan',
+                price: essentialPrice
+            });
+            total += essentialPrice;
+
+            // 4. Bio Nutriens calculation
+            const bioPacksNeeded = Math.ceil(area / products.bioNutriens.coveragePerPack * 3);
+            const bioPrice = bioPacksNeeded * products.bioNutriens.price;
+
+            results.push({
+                name: products.bioNutriens.name,
+                quantity: bioPacksNeeded + ' pack',
+                details: 'Cover 3 bulan',
+                price: bioPrice
+            });
+            total += bioPrice;
+
+            // 5. Dethatcher calculation
+            const dethatcherPacksNeeded = Math.ceil(area / products.dethatcher.coveragePerPack * 3);
+            const dethatcherPrice = dethatcherPacksNeeded * products.dethatcher.price;
+
+            results.push({
+                name: products.dethatcher.name,
+                quantity: dethatcherPacksNeeded + ' pack',
+                details: 'Cover 3 bulan',
+                price: dethatcherPrice
+            });
+            total += dethatcherPrice;
+
+            return { products: results, total: total };
+        }
+
+        function displayResults(area, results) {
+            document.getElementById('displayArea').textContent = area.toFixed(0);
+
+            const productList = document.getElementById('productList');
+            productList.innerHTML = '';
+
+            results.products.forEach(product => {
+                const productItem = document.createElement('div');
+                productItem.className = 'product-item';
+                productItem.innerHTML = `
+                    <div class="product-info">
+                        <div class="product-name">${product.name}</div>
+                        <div class="product-details">
+                            ${product.quantity} - ${product.details}
+                        </div>
+                    </div>
+                    <div class="product-price">RM ${product.price.toFixed(2)}</div>
+                `;
+                productList.appendChild(productItem);
+            });
+
+            document.getElementById('totalPrice').textContent = 'RM ' + results.total.toFixed(2);
+        }
+
+        // Load saved area on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            const saved = localStorage.getItem('thelawn_lawnArea_3month');
+            if (saved) {
+                document.getElementById('lawnArea').value = saved;
+            }
+        });
+
+        // Save area to localStorage
+        document.getElementById('lawnArea').addEventListener('input', (e) => {
+            localStorage.setItem('thelawn_lawnArea_3month', e.target.value);
+        });
+
+        // Allow Enter key to calculate
+        document.getElementById('lawnArea').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                calculate();
+            }
+        });
+    </script>
+</body>
+</html>
