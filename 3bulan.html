@@ -1046,6 +1046,25 @@
             });
 
             document.getElementById('totalPrice').textContent = 'RM ' + results.total.toFixed(2);
+
+            // Generate WhatsApp message
+            let whatsappMessage = `*Set Penjagaan Laman 3 Bulan*\n\n`;
+            whatsappMessage += `Saiz laman saya: *${area.toFixed(0)} sqft*\n\n`;
+            whatsappMessage += `*Senarai Produk:*\n`;
+
+            results.products.forEach((product, index) => {
+                whatsappMessage += `${index + 1}. ${product.name}\n`;
+                whatsappMessage += `   • ${product.quantity} (${product.netWeight})\n`;
+                whatsappMessage += `   • RM${product.price.toFixed(2)}\n\n`;
+            });
+
+            whatsappMessage += `*Jumlah Keseluruhan: RM${results.total.toFixed(2)}*\n`;
+            whatsappMessage += `(Penghantaran percuma Semenanjung Malaysia)`;
+
+            // Update WhatsApp link
+            const whatsappLink = document.querySelector('.cta-button');
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            whatsappLink.href = `https://wa.me/601121888274?text=${encodedMessage}`;
         }
 
         // Load saved area on page load
