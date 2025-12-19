@@ -1175,10 +1175,10 @@
         const products = {
             baja: {
                 name: 'Baja Premium',
-                usageRate: 1.93, // 1.93g per sqft per month
+                usageRate: 2, // 2g per sqft per month
                 pricePerKg: 12.5, // RM12.50 per kg (RM25/2kg pack)
-                packPrice: 25, // RM25 per 2kg pack
-                packWeight: 2, // 2kg per pack
+                packPrice: 25, // RM25 per 2kg pack (not used - selling by exact weight)
+                packWeight: 2, // 2kg per pack (not used - selling by exact weight)
                 months: 3
             },
             racun: {
@@ -1270,14 +1270,15 @@
             let total = 0;
 
             // 1. Baja Premium calculation - Tailored to customer's lawn size
-            // Based on 1.93g per sqft per month
-            // Example: 622 sqft × 1.93g = 1,200g = 1.2kg per month × 3 = 3.6kg total
-            // Price: 3.6kg × RM12.50/kg = RM45.00 (exact, tailored to lawn size)
-            // Customer gets exactly what they need - no fixed pack sizes
+            // Based on 2g per sqft per month
+            // Example: 622 sqft × 2g = 1,244g = 1.244kg per month × 3 = 3.732kg total
+            // Price: 3.732kg × RM12.50/kg = RM46.65 → round to RM47.00
+            // Rounding: >= 50sen round up, < 50sen round down
             const bajaGramsPerMonth = area * products.baja.usageRate; // grams per month
             const bajaKgPerMonth = bajaGramsPerMonth / 1000; // kg per month
             const bajaTotalKg = bajaKgPerMonth * products.baja.months; // total kg for 3 months
-            const bajaFinalPrice = bajaTotalKg * products.baja.pricePerKg; // exact price for exact weight
+            const bajaRawPrice = bajaTotalKg * products.baja.pricePerKg; // raw price
+            const bajaFinalPrice = Math.round(bajaRawPrice); // round to nearest ringgit (>= 50sen round up)
 
             results.push({
                 name: products.baja.name,
@@ -1495,7 +1496,7 @@
         }
 
         // Calculator version - increment this when calculation logic changes
-        const CALCULATOR_VERSION = 2; // Updated for tailored baja pricing
+        const CALCULATOR_VERSION = 4; // Added rounding for baja price (nearest ringgit)
 
         // Load saved area on page load
         window.addEventListener('DOMContentLoaded', () => {
