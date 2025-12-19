@@ -1175,8 +1175,10 @@
         const products = {
             baja: {
                 name: 'Baja Premium',
-                pricePerKg: 12.5, // RM25/2kg = RM12.5/kg
-                usageRate: 2, // 2g per sqft
+                usageRate: 1.93, // 1.93g per sqft per month
+                pricePerKg: 12.5, // RM12.50 per kg (RM25/2kg pack)
+                packPrice: 25, // RM25 per 2kg pack
+                packWeight: 2, // 2kg per pack
                 months: 3
             },
             racun: {
@@ -1267,21 +1269,25 @@
             const results = [];
             let total = 0;
 
-            // 1. Baja calculation
-            const bajaPerMonth = (area * products.baja.usageRate) / 1000; // kg per month
-            const bajaTotal = bajaPerMonth * products.baja.months;
-            const bajaPrice = bajaTotal * products.baja.pricePerKg;
-            const bajaPacksNeeded = Math.ceil(bajaTotal / 2); // 2kg per pack
+            // 1. Baja Premium calculation - Tailored to customer's lawn size
+            // Based on 1.93g per sqft per month
+            // Example: 622 sqft × 1.93g = 1,200g = 1.2kg per month × 3 = 3.6kg total
+            // Price: 3.6kg × RM12.50/kg = RM45.00 (exact, tailored to lawn size)
+            // Customer gets exactly what they need - no fixed pack sizes
+            const bajaGramsPerMonth = area * products.baja.usageRate; // grams per month
+            const bajaKgPerMonth = bajaGramsPerMonth / 1000; // kg per month
+            const bajaTotalKg = bajaKgPerMonth * products.baja.months; // total kg for 3 months
+            const bajaFinalPrice = bajaTotalKg * products.baja.pricePerKg; // exact price for exact weight
 
             results.push({
                 name: products.baja.name,
-                quantity: `${bajaPacksNeeded} pack x 2kg`,
-                netWeight: bajaTotal.toFixed(1) + 'kg',
-                details: `${bajaPerMonth.toFixed(1)}kg sebulan x 3 bulan`,
-                unitPrice: 25,
-                price: bajaPacksNeeded * 25
+                quantity: `${bajaTotalKg.toFixed(2)}kg`,
+                netWeight: bajaTotalKg.toFixed(2) + 'kg',
+                details: `${bajaKgPerMonth.toFixed(2)}kg sebulan x 3 bulan`,
+                unitPrice: products.baja.pricePerKg,
+                price: bajaFinalPrice
             });
-            total += bajaPacksNeeded * 25;
+            total += bajaFinalPrice;
 
             // 2. Racun Rumpai calculation
             const racunBottlesNeeded = Math.ceil(area / products.racun.coveragePerBottle * 3); // for 3 months
@@ -1358,12 +1364,21 @@
             results.products.forEach(product => {
                 const productItem = document.createElement('div');
                 productItem.className = 'product-item';
+
+                // For Baja Premium (weight-based), show different format
+                let priceBreakdown = '';
+                if (product.name === 'Baja Premium') {
+                    priceBreakdown = `RM${formatNumber(product.unitPrice.toFixed(2))} per kg × ${product.quantity} = RM${formatNumber(product.price.toFixed(2))}`;
+                } else {
+                    priceBreakdown = `RM${formatNumber(product.unitPrice.toFixed(2))} per item × ${product.quantity.split(' ')[0]} = RM${formatNumber(product.price.toFixed(2))}`;
+                }
+
                 productItem.innerHTML = `
                     <div class="product-info">
                         <div class="product-name">${product.name}</div>
                         <div class="product-details">
                             <strong>${product.quantity}</strong> (${product.netWeight})<br>
-                            RM${formatNumber(product.unitPrice.toFixed(2))} per item × ${product.quantity.split(' ')[0]} = RM${formatNumber(product.price.toFixed(2))}<br>
+                            ${priceBreakdown}<br>
                             <span style="color: #6b7280; font-size: 0.8125rem;">${product.details}</span>
                         </div>
                     </div>
@@ -1479,11 +1494,21 @@
             closeOrderForm();
         }
 
+        // Calculator version - increment this when calculation logic changes
+        const CALCULATOR_VERSION = 2; // Updated for tailored baja pricing
+
         // Load saved area on page load
         window.addEventListener('DOMContentLoaded', () => {
+            // Clear old calculations if version changed
+            const savedVersion = localStorage.getItem('thelawn_calculator_version');
+            if (!savedVersion || parseInt(savedVersion) !== CALCULATOR_VERSION) {
+                localStorage.removeItem('thelawn_calculation_3bulan');
+                localStorage.setItem('thelawn_calculator_version', CALCULATOR_VERSION);
+            }
+
             // PRIORITY 1: Check if area data was passed from map measurement (OVERRIDE EVERYTHING)
             const mapArea = localStorage.getItem('thelawn_mapArea');
-            
+
             if (mapArea) {
                 // Parse and validate the map area
                 const areaValue = parseFloat(mapArea);
@@ -1509,7 +1534,7 @@
                 localStorage.removeItem('thelawn_mapArea');
                 return; // Exit early since we used map area
             }
-            
+
             // PRIORITY 2: Check if there's a saved calculation to restore
             const savedCalculation = localStorage.getItem('thelawn_calculation_3bulan');
             
