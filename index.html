@@ -33,6 +33,7 @@
 
         html {
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         body {
@@ -40,6 +41,8 @@
             background-color: #f9fafb;
             color: #111827;
             line-height: 1.6;
+            overflow-x: hidden;
+            width: 100%;
         }
 
         .container {
@@ -996,15 +999,21 @@ body.menu-open {
 .section-divider {
     margin: 4rem 0 3rem 0;
     position: relative;
-    width: 100vw;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
+    width: 100%;
     background: linear-gradient(180deg, #f9fafb 0%, #ffffff 100%);
     padding: 3rem 1rem;
     border-top: 1px solid #e5e7eb;
     border-bottom: 1px solid #e5e7eb;
+}
+
+@media (min-width: 640px) {
+    .section-divider {
+        width: 100vw;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+    }
 }
 
 .divider-content {
@@ -1061,18 +1070,102 @@ body.menu-open {
     display: none;
 }
 
+/* Mobile Responsive Fixes */
 @media (max-width: 768px) {
-    .section-divider {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .hero {
         padding: 2rem 1rem;
+    }
+
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero p {
+        font-size: 0.9375rem;
+    }
+
+    .info-box {
+        padding: 1rem;
+    }
+
+    .info-box h3 {
+        font-size: 1rem;
+    }
+
+    .info-box li {
+        font-size: 0.875rem;
+    }
+
+    .search-container {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .search-input-wrapper {
+        width: 100%;
+    }
+
+    #searchBtn,
+    #locationBtn {
+        width: 100%;
+    }
+
+    .button-group {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .button-group button {
+        width: 100%;
+    }
+
+    .tips-section {
+        padding: 1.5rem 1rem;
+    }
+
+    .tips-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .tips-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .tip-item h3 {
+        font-size: 1rem;
+    }
+
+    .tip-item p {
+        font-size: 0.875rem;
+    }
+
+    .section-divider {
+        padding: 2rem 0;
         margin: 3rem 0 2rem 0;
+        width: 100%;
+        left: auto;
+        right: auto;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .divider-content {
+        padding: 0 1rem;
     }
 
     .divider-title {
-        font-size: 1.5rem;
+        font-size: 1.375rem;
     }
 
     .divider-subtitle {
         font-size: 0.9375rem;
+        padding: 0 0.5rem;
+        line-height: 1.6;
     }
 
     .divider-icon {
@@ -1083,6 +1176,94 @@ body.menu-open {
     .divider-icon svg {
         width: 36px;
         height: 36px;
+    }
+
+    .calculator-section {
+        padding: 1.5rem 1rem;
+    }
+
+    .calculator-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .calculator-title h2 {
+        font-size: 1.375rem;
+    }
+
+    .calculator-title p {
+        font-size: 0.875rem;
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+    .form-label {
+        font-size: 0.875rem;
+    }
+
+    .result-display {
+        padding: 1rem;
+    }
+
+    .result-label {
+        font-size: 0.875rem;
+    }
+
+    .result-value {
+        font-size: 1.25rem;
+    }
+}
+
+/* Small mobile devices - iPhone SE and similar */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 0.75rem;
+    }
+
+    .logo-text {
+        font-size: 1.25rem;
+    }
+
+    .hero h1 {
+        font-size: 1.375rem;
+    }
+
+    .section-divider {
+        padding: 1.5rem 0;
+        margin: 2rem 0 1.5rem 0;
+    }
+
+    .divider-content {
+        padding: 0 0.75rem;
+    }
+
+    .divider-title {
+        font-size: 1.25rem;
+        line-height: 1.3;
+    }
+
+    .divider-subtitle {
+        font-size: 0.875rem;
+        padding: 0 0.25rem;
+        line-height: 1.5;
+    }
+
+    .divider-icon {
+        width: 56px;
+        height: 56px;
+        margin-bottom: 1rem;
+    }
+
+    .divider-icon svg {
+        width: 32px;
+        height: 32px;
+    }
+
+    .calculator-section {
+        padding: 1.25rem 0.75rem;
     }
 }
 
@@ -1311,18 +1492,6 @@ body.menu-open {
 
         <!-- Pesticide/Foliar Calculator -->
         <div class="calculator-section">
-            <div class="calculator-header">
-                <div class="calculator-icon green">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
-                    </svg>
-                </div>
-                <div class="calculator-title">
-                    <h2>Pengiraan Racun/Foliar</h2>
-                    <p>Calculate mixing ratios based on product label instructions</p>
-                </div>
-            </div>
-
             <div class="form-group">
                 <label class="form-label">Racun/Foliar (mengikut label botol):</label>
                 <div class="input-group">
@@ -1394,18 +1563,6 @@ body.menu-open {
 
         <!-- Topdress Sand Calculator -->
         <div class="calculator-section">
-            <div class="calculator-header">
-                <div class="calculator-icon amber">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
-                    </svg>
-                </div>
-                <div class="calculator-title">
-                    <h2>Pengiraan Topdress Pasir</h2>
-                    <p>Calculate sand volume needed for topdressing</p>
-                </div>
-            </div>
-
             <div class="form-group">
                 <label class="form-label">Tebal Pasir Topdress:</label>
                 <div class="input-with-unit">
