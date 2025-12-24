@@ -849,6 +849,80 @@
             }
         }
 
+        /* WhatsApp Button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #25D366;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            border: none;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .whatsapp-button:hover {
+            background: #1fb855;
+        }
+
+        .whatsapp-button:active {
+            background: #1fb855;
+        }
+
+        .whatsapp-button svg {
+            width: 1.5rem;
+            height: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .whatsapp-button-text {
+            display: inline;
+        }
+
+        /* Desktop view - circular floating button */
+        @media (min-width: 768px) {
+            .whatsapp-button {
+                bottom: 6rem;
+                right: 2rem;
+                left: auto;
+                width: 3.5rem;
+                height: 3.5rem;
+                border-radius: 50%;
+                padding: 0;
+                box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+            }
+
+            .whatsapp-button:hover {
+                transform: translateY(-3px) scale(1.05);
+                box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            }
+
+            .whatsapp-button:active {
+                transform: translateY(-1px) scale(1.05);
+            }
+
+            .whatsapp-button svg {
+                width: 2rem;
+                height: 2rem;
+            }
+
+            .whatsapp-button-text {
+                display: none;
+            }
+        }
+
         /* Back to Top Button */
         .back-to-top {
             position: fixed;
@@ -1394,6 +1468,148 @@ body.menu-open {
     }
 }
 
+/* Services Section */
+.services-section {
+    padding: var(--space-8) 0;
+    margin-bottom: var(--space-12);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    align-items: start;
+}
+
+@media (min-width: 768px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.service-card {
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    padding: var(--space-6);
+    border: 1px solid var(--gray-200);
+    transition: all var(--transition-slow);
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card:hover {
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-2px);
+}
+
+.service-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-4);
+}
+
+.service-card h2 {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    color: var(--gray-900);
+    margin-bottom: var(--space-3);
+}
+
+.service-description {
+    color: var(--gray-600);
+    margin-bottom: var(--space-6);
+    line-height: 1.6;
+}
+
+.service-card h3 {
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    color: var(--gray-900);
+    margin-bottom: var(--space-3);
+    margin-top: var(--space-6);
+}
+
+.service-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: var(--space-6);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2) var(--space-4);
+}
+
+.service-list li {
+    color: var(--gray-700);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: 0.9375rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.service-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--green-600);
+    font-weight: 600;
+}
+
+/* Collapsible Why Matters Section */
+.why-matters-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-4);
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    font-family: var(--font-heading);
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--gray-900);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    margin-top: auto;
+}
+
+.why-matters-toggle:hover {
+    background: var(--gray-100);
+}
+
+.toggle-icon {
+    width: 20px;
+    height: 20px;
+    transition: transform var(--transition-base);
+}
+
+.why-matters-toggle.active .toggle-icon {
+    transform: rotate(180deg);
+}
+
+.why-matters-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-slow);
+    padding: 0 var(--space-4);
+}
+
+.why-matters-content.active {
+    max-height: 1000px;
+    padding: var(--space-4);
+}
+
+.why-matters-content p {
+    color: var(--gray-600);
+    line-height: 1.7;
+    margin-bottom: var(--space-3);
+}
+
 
     </style>
 </head>
@@ -1716,6 +1932,90 @@ body.menu-open {
             </div>
         </div>
 
+        <!-- Section Divider - Services -->
+        <div class="section-divider">
+            <div class="divider-content">
+                <div class="divider-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                        <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                    </svg>
+                </div>
+                <h2 class="divider-title">Our Services</h2>
+                <p class="divider-subtitle">Professional lawn care, landscaping and outdoor services at the click of a button.</p>
+            </div>
+        </div>
+
+        <!-- Services Section -->
+        <div class="services-section">
+            <div class="services-grid">
+                <!-- Lawn Care Card -->
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&auto=format&fit=crop" alt="Lawn Care" class="service-image">
+                    <h2>Lawn Care</h2>
+                    <p class="service-description">Complete care for a greener, healthier lawn. From precise mowing to fertilization and weed control, we handle everything to keep your yard looking its absolute best.</p>
+
+                    <h3>Available Services</h3>
+                    <ul class="service-list">
+                        <li>Lawn Mowing</li>
+                        <li>Edging</li>
+                        <li>Blowing</li>
+                        <li>Weed Control</li>
+                        <li>Fertilization</li>
+                        <li>Lawn Treatment</li>
+                        <li>And More</li>
+                    </ul>
+
+                    <!-- Collapsible Section -->
+                    <button class="why-matters-toggle" onclick="toggleWhy('lawn-care')">
+                        Why Lawn Care matters
+                        <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div id="why-lawn-care" class="why-matters-content">
+                        <p><strong>Property Value:</strong> A well-maintained lawn can increase property value by up to 15% and creates lasting curb appeal.</p>
+                        <p><strong>Environmental Benefits:</strong> Healthy grass reduces soil erosion, filters rainwater, and produces oxygen while absorbing carbon dioxide.</p>
+                        <p><strong>Health & Safety:</strong> Regular lawn care removes allergens, prevents pest infestations, and creates a safer outdoor environment for families.</p>
+                        <p><strong>Time Savings:</strong> Professional lawn care saves you hours every week, letting you enjoy your yard instead of working on it.</p>
+                    </div>
+                </div>
+
+                <!-- Grass Installation Card -->
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1598902108854-10e335adac99?w=800&auto=format&fit=crop" alt="Grass Installation" class="service-image">
+                    <h2>Grass Installation</h2>
+                    <p class="service-description">Transform your lawn with premium grass varieties and professional installation. From grass selection to complete irrigation systems, we provide everything for a perfect lawn foundation.</p>
+
+                    <h3>Available Services</h3>
+                    <ul class="service-list">
+                        <li>Cow Grass</li>
+                        <li>Philippine Grass</li>
+                        <li>Pearl Grass</li>
+                        <li>Japanese Grass</li>
+                        <li>Sprinkler System</li>
+                        <li>Subsoil Drainage</li>
+                        <li>And More</li>
+                    </ul>
+
+                    <!-- Collapsible Section -->
+                    <button class="why-matters-toggle" onclick="toggleWhy('landscaping')">
+                        Why Grass Installation matters
+                        <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div id="why-landscaping" class="why-matters-content">
+                        <p><strong>Right Grass Selection:</strong> Different grass varieties suit different climates and usage patterns. Professional installation ensures you get the perfect grass type for your needs.</p>
+                        <p><strong>Proper Foundation:</strong> Expert subsoil drainage and preparation prevent waterlogging, ensure healthy root growth, and create a lawn that thrives for years.</p>
+                        <p><strong>Water Efficiency:</strong> Professional sprinkler systems ensure even coverage, reduce water waste, and maintain optimal moisture levels for lush, healthy grass.</p>
+                        <p><strong>Long-Term Value:</strong> Quality installation from the start saves money on repairs and replanting, giving you a beautiful, durable lawn that enhances your property.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
 </main>
     <!-- Footer -->
     <footer>
@@ -1745,6 +2045,13 @@ body.menu-open {
             </div>
         </div>
     </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/601121888274" target="_blank" class="whatsapp-button" aria-label="WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+    </a>
 
     <!-- Back to Top Button -->
     <button id="backToTop" class="back-to-top" aria-label="Back to top">
@@ -1842,6 +2149,23 @@ document.getElementById('ctaLink').addEventListener('click', (e) => {
     // Data already saved to localStorage by app.js updateUI()
     // Just let the link navigate normally
 });
+</script>
+<script>
+// Collapsible "Why it matters" sections
+function toggleWhy(sectionId) {
+    // Get all "Why it matters" sections and buttons
+    const allContents = document.querySelectorAll('.why-matters-content');
+    const allButtons = document.querySelectorAll('.why-matters-toggle');
+
+    // Toggle all sections and buttons simultaneously
+    allContents.forEach(content => {
+        content.classList.toggle('active');
+    });
+
+    allButtons.forEach(button => {
+        button.classList.toggle('active');
+    });
+}
 </script>
 
 
