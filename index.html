@@ -1740,7 +1740,7 @@ body.menu-open {
                 </a>
                 <p class="footer-text">Malaysia's premier lawn care calculator tool by TheLawn. Perkhidmatan lanskap dan produk laman berkualiti tinggi pada harga berpatutan.</p>
                 <div class="footer-bottom">
-                    <p>&copy; 2025 TheLawn. All rights reserved.</p>
+                    <p>&copy; <span id="currentYear"></span> TheLawn. All rights reserved.</p>
                 </div>
             </div>
         </div>
@@ -1756,6 +1756,10 @@ body.menu-open {
     <!-- Leaflet JavaScript -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="app.js"></script>
+    <script>
+// Set current year in footer
+document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
     <script>
 const menuToggle = document.getElementById('menuToggle');
 const mobileNav = document.getElementById('mobileNav');
