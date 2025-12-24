@@ -39,8 +39,47 @@ if (savedLat && savedLng) {
 
 const map = L.map('map', {
     attributionControl: false,
-    maxZoom: 19
+    maxZoom: 19,
+    scrollWheelZoom: false, // Disable default scroll wheel zoom
+    touchZoom: true, // Enable pinch zoom on mobile
+    doubleClickZoom: true, // Keep double-click zoom
+    boxZoom: true, // Keep shift+drag box zoom
+    keyboard: true // Keep keyboard zoom (+/- keys)
 }).setView([initialLat, initialLng], initialZoom);
+
+// Enable zoom only with Ctrl+scroll on desktop
+let scrollHintShown = false;
+map.on('wheel', function(e) {
+    if (e.originalEvent.ctrlKey) {
+        // Ctrl is pressed, allow zooming
+        e.originalEvent.preventDefault();
+        if (e.originalEvent.deltaY < 0) {
+            map.zoomIn();
+        } else {
+            map.zoomOut();
+        }
+    } else {
+        // Show hint only once per session
+        if (!scrollHintShown) {
+            scrollHintShown = true;
+            const hint = document.createElement('div');
+            hint.style.cssText = 'position: fixed; top: 80px; left: 50%; transform: translateX(-50%); background: rgba(17, 24, 39, 0.95); color: white; padding: 12px 20px; border-radius: 8px; font-size: 14px; z-index: 10000; box-shadow: 0 4px 12px rgba(0,0,0,0.3); animation: slideDown 0.3s ease-out;';
+            hint.innerHTML = '💡 Use <strong>Ctrl + Scroll</strong> to zoom the map';
+            document.body.appendChild(hint);
+
+            // Add animation
+            const style = document.createElement('style');
+            style.textContent = '@keyframes slideDown { from { opacity: 0; transform: translate(-50%, -10px); } to { opacity: 1; transform: translate(-50%, 0); } }';
+            document.head.appendChild(style);
+
+            setTimeout(() => {
+                hint.style.opacity = '0';
+                hint.style.transition = 'opacity 0.3s ease-out';
+                setTimeout(() => hint.remove(), 300);
+            }, 3000);
+        }
+    }
+});
 
 // Show notification if location was restored
 if (savedLat && savedLng) {
