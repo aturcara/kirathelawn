@@ -563,13 +563,13 @@ document.querySelectorAll('[data-compare]').forEach(container => {
 // =========================================
 // SCROLL ANIMATIONS (IntersectionObserver)
 // =========================================
-document.addEventListener('DOMContentLoaded', () => {
+function initScrollAnimations() {
     const animatedElements = document.querySelectorAll('.fade-up, .fade-in, .slide-in-left, .slide-in-right');
 
     const observerOptions = {
         root: null,
         rootMargin: '0px',
-        threshold: 0.15 // Trigger when 15% of the element is visible
+        threshold: 0.1 // Trigger when 10% of the element is visible
     };
 
     const observer = new IntersectionObserver((entries, observer) => {
@@ -582,5 +582,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }, observerOptions);
 
     animatedElements.forEach(el => observer.observe(el));
-});
+}
+
+// Run the initialization
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initScrollAnimations);
+} else {
+    initScrollAnimations();
+}
 
