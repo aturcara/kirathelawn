@@ -633,8 +633,8 @@ function initComparisonSliders() {
 
     sliders.forEach(slider => {
         const handle = slider.querySelector('.comparison-slider-handle');
-        const afterImg = slider.querySelector('.after-img');
-        if (!handle || !afterImg) return;
+        const imgToClip = slider.querySelector('.before-img');
+        if (!handle || !imgToClip) return;
 
         let isDragging = false;
 
@@ -644,7 +644,7 @@ function initComparisonSliders() {
             percentage = Math.max(0, Math.min(100, percentage));
 
             handle.style.left = percentage + '%';
-            afterImg.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
+            imgToClip.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
         }
 
         function startDrag(e) {

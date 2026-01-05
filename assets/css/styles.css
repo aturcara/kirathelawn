@@ -1115,26 +1115,36 @@ body.menu-open {
     z-index: 2;
 }
 
-.comparison-label {
+.comparison-labels {
     position: absolute;
     bottom: 1rem;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    pointer-events: none;
+    z-index: 30;
+}
+
+.comparison-label {
+    position: relative;
     padding: 0.375rem 0.75rem;
-    background: var(--yellow-primary);
-    color: var(--teal-primary);
+    background: rgba(0, 0, 0, 0.7);
+    color: var(--white);
     font-size: 0.75rem;
     font-weight: 600;
     text-transform: uppercase;
     border-radius: var(--radius-pill);
+    pointer-events: none;
 }
 
-.comparison-before .comparison-label {
-    left: 1rem;
+.comparison-label.before {
+    background: #DC2626;
+}
+
+.comparison-label.after {
     background: var(--teal-primary);
-    color: var(--white);
-}
-
-.comparison-after .comparison-label {
-    right: 1rem;
 }
 
 .comparison-slider {
@@ -3775,7 +3785,7 @@ footer {
 
 @media (min-width: 1024px) {
     .product-showcase {
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
@@ -3909,12 +3919,13 @@ footer {
 }
 
 .comparison-section .comparison-slider .before-img {
-    z-index: 1;
+    z-index: 2;
+    clip-path: inset(0 50% 0 0);
 }
 
 .comparison-section .comparison-slider .after-img {
-    z-index: 2;
-    clip-path: inset(0 50% 0 0);
+    z-index: 1;
+    clip-path: none;
 }
 
 .comparison-section .comparison-slider-handle {
@@ -3953,34 +3964,6 @@ footer {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23194239' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m18 8 4 4-4 4'/%3E%3Cpath d='m6 8-4 4 4 4'/%3E%3Cpath d='M2 12h20'/%3E%3C/svg%3E");
     background-size: contain;
     background-repeat: no-repeat;
-}
-
-.comparison-section .comparison-labels {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: space-between;
-    padding: 0.75rem;
-    pointer-events: none;
-}
-
-.comparison-section .comparison-label {
-    background: rgba(0,0,0,0.7);
-    color: var(--white);
-    padding: 0.25rem 0.75rem;
-    border-radius: 1rem;
-    font-size: 0.75rem;
-    font-weight: 600;
-}
-
-.comparison-section .comparison-label.before {
-    background: #DC2626;
-}
-
-.comparison-section .comparison-label.after {
-    background: var(--teal-primary);
 }
 
 .comparison-item-caption {
