@@ -138,7 +138,7 @@ function clearCalculation() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function calculate() {
+function calculate(shouldScroll = true) {
     const lawnAreaInput = document.getElementById('lawnArea');
     if (!lawnAreaInput) return;
 
@@ -172,7 +172,9 @@ function calculate() {
     const resultsSection = document.getElementById('results');
     if (resultsSection) {
         resultsSection.classList.add('show');
-        resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (shouldScroll) {
+            resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
     }
 }
 
@@ -482,7 +484,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
             // Auto-calculate after a brief delay to ensure DOM is ready
             setTimeout(() => {
-                calculate();
+                calculate(false);
             }, 100);
         }
 
@@ -514,11 +516,6 @@ window.addEventListener('DOMContentLoaded', () => {
                 const resultsSection = document.getElementById('results');
                 if (resultsSection) {
                     resultsSection.classList.add('show');
-
-                    // Scroll to results smoothly
-                    setTimeout(() => {
-                        resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }, 300);
                 }
 
                 return; // Exit early if we restored saved calculation
