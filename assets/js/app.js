@@ -31,7 +31,7 @@ const initialZoom = savedZoom ? parseInt(savedZoom) : 18;
 
 // Log if using saved location
 if (savedLat && savedLng) {
-    console.log('✅ Map restored to saved location:', { lat: initialLat, lng: initialLng, zoom: initialZoom });
+    console.log('✅ Peta kembali ke lokasi tersimpan:', { lat: initialLat, lng: initialLng, zoom: initialZoom });
     console.log('📦 LocalStorage data:', {
         saved_lat: savedLat,
         saved_lng: savedLng,
@@ -68,7 +68,7 @@ map.on('wheel', function(e) {
             scrollHintShown = true;
             const hint = document.createElement('div');
             hint.style.cssText = 'position: fixed; top: 80px; left: 50%; transform: translateX(-50%); background: rgba(17, 24, 39, 0.95); color: white; padding: 12px 20px; border-radius: 8px; font-size: 14px; z-index: 10000; box-shadow: 0 4px 12px rgba(0,0,0,0.3); animation: slideDown 0.3s ease-out;';
-            hint.innerHTML = '💡 Use <strong>Ctrl + Scroll</strong> to zoom the map';
+            hint.innerHTML = '💡 Gunakan <strong>Ctrl + Skrol</strong> untuk zum peta';
             document.body.appendChild(hint);
 
             // Add animation
@@ -94,7 +94,7 @@ if (savedLat && savedLng) {
             closeOnClick: true
         })
         .setLatLng([initialLat, initialLng])
-        .setContent(`<div style="text-align: center; font-size: 0.875rem;"><strong>📍 Map Restored</strong><br>Last saved location</div>`)
+        .setContent(`<div style="text-align: center; font-size: 0.875rem;"><strong>📍 Peta Dimuatkan</strong><br>ke lokasi tersimpan</div>`)
         .openOn(map);
 
         // Auto close after 2 seconds
@@ -273,7 +273,7 @@ function updatePolygon() {
         const areaSqft = area * 10.7639;
 
         polygonLayer.bindPopup(`
-            <strong>Area:</strong><br>
+            <strong>Keluasan:</strong><br>
             ${formatNumber(area.toFixed(2))} m²<br>
             ${formatNumber(areaSqft.toFixed(2))} sqft
         `);
@@ -473,15 +473,15 @@ document.getElementById('locationBtn').addEventListener('click', () => {
                         iconSize: [16, 16],
                         iconAnchor: [8, 8]
                     })
-                }).addTo(map).bindPopup('Your Location').openPopup();
+                }).addTo(map).bindPopup('Lokasi Anda').openPopup();
             },
             (error) => {
                 console.error('Geolocation error:', error);
-                alert('Unable to retrieve your location. Please ensure location services are enabled.');
+                alert('Tidak dapat mengesan lokasi anda. Sila pastikan perkhidmatan lokasi diaktifkan.');
             }
         );
     } else {
-        alert('Geolocation is not supported by your browser.');
+        alert('Geolokasi tidak disokong oleh pelayar anda.');
     }
 });
 
@@ -489,7 +489,7 @@ document.getElementById('locationBtn').addEventListener('click', () => {
 document.getElementById('searchBtn').addEventListener('click', () => {
     const query = document.getElementById('searchInput').value.trim();
     if (!query) {
-        alert('Please enter a location to search.');
+        alert('Sila masukkan lokasi untuk dicari.');
         return;
     }
 
@@ -529,12 +529,12 @@ document.getElementById('searchBtn').addEventListener('click', () => {
                     .bindPopup(display_name)
                     .openPopup();
             } else {
-                alert('Location not found. Please try a different search term.');
+                alert('Lokasi tidak dijumpai. Sila cuba kata kunci lain.');
             }
         })
         .catch(error => {
             console.error('Search error:', error);
-            alert('An error occurred while searching. Please try again.');
+            alert('Ralat berlaku semasa carian. Sila cuba lagi.');
         });
 });
 

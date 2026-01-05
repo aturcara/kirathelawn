@@ -117,7 +117,7 @@ if (calculatePesticideBtn) {
         const yArea = parseFloat(document.getElementById('yourArea').value) || 0;
 
         if (!pAmount || !wAmount || !lArea || !yArea) {
-            alert('Please fill in all fields');
+            alert('Sila isi semua ruangan');
             return;
         }
 
@@ -166,7 +166,7 @@ if (calculateSandBtn) {
         const area = parseFloat(document.getElementById('sandArea').value) || 0;
 
         if (!thickness || !area) {
-            alert('Please fill in all fields');
+            alert('Sila isi semua ruangan');
             return;
         }
 
@@ -177,7 +177,7 @@ if (calculateSandBtn) {
 
         let sandDisplay = '';
         if (tons < 1) sandDisplay = (tons * 1000).toFixed(0) + ' kg';
-        else sandDisplay = tons.toFixed(2) + ' tonne';
+        else sandDisplay = tons.toFixed(2) + ' tan';
 
         document.getElementById('sandVolume').textContent = sandDisplay;
         

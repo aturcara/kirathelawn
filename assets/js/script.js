@@ -61,7 +61,7 @@ if (stateSelect) {
         const areaSelect = document.getElementById('area');
 
         // Clear and disable area select
-        areaSelect.innerHTML = '<option value="">Select Area</option>';
+        areaSelect.innerHTML = '<option value="">Pilih Kawasan</option>';
         areaSelect.disabled = true;
         document.getElementById('location').value = '';
 
@@ -109,21 +109,21 @@ function populateServiceCheckboxes() {
 
     const services = selectedServiceType === 'lawn-care'
         ? [
-            { value: 'Seeding', label: 'Seeding', icon: '🌱' },
-            { value: 'Aeration', label: 'Aeration', icon: '🔄' },
+            { value: 'Menyemai', label: 'Menyemai (Seeding)', icon: '🌱' },
+            { value: 'Pengudaraan', label: 'Pengudaraan (Aeration)', icon: '🔄' },
             { value: 'Topdress', label: 'Topdress', icon: '🏖️' },
-            { value: 'Mowing', label: 'Mowing', icon: '✂️' },
-            { value: 'Dethatch', label: 'Dethatch', icon: '🧹' },
-            { value: 'Sprinkler (Lawn Care)', label: 'Sprinkler', icon: '💧' },
-            { value: 'Subsoil Drainage (Lawn Care)', label: 'Subsoil Drainage', icon: '🚰' }
+            { value: 'Memotong Rumput', label: 'Memotong Rumput', icon: '✂️' },
+            { value: 'Buang Thatch', label: 'Buang Thatch (Dethatch)', icon: '🧹' },
+            { value: 'Sistem Renjis (Penjagaan)', label: 'Sistem Renjis (Penjagaan)', icon: '💧' },
+            { value: 'Saliran Bawah Tanah (Penjagaan)', label: 'Saliran Bawah Tanah (Penjagaan)', icon: '🚰' }
         ]
         : [
-            { value: 'Cow Grass Installation', label: 'Cow Grass', icon: '🐄' },
-            { value: 'Philippine Grass Installation', label: 'Philippine Grass', icon: '🇵🇭' },
-            { value: 'Pearl Grass Installation', label: 'Pearl Grass', icon: '💎' },
-            { value: 'Japanese Grass Installation', label: 'Japanese Grass', icon: '🇯🇵' },
-            { value: 'Sprinkler System (Installation)', label: 'Sprinkler System', icon: '💧' },
-            { value: 'Subsoil Drainage (Installation)', label: 'Subsoil Drainage', icon: '🚰' }
+            { value: 'Rumput Kerbau Pemasangan', label: 'Rumput Kerbau', icon: '🐄' },
+            { value: 'Rumput Filipina Pemasangan', label: 'Rumput Filipina', icon: '🇵🇭' },
+            { value: 'Rumput Mutiara Pemasangan', label: 'Rumput Mutiara', icon: '💎' },
+            { value: 'Rumput Jepun Pemasangan', label: 'Rumput Jepun', icon: '🇯🇵' },
+            { value: 'Sistem Renjis (Pemasangan)', label: 'Sistem Renjis', icon: '💧' },
+            { value: 'Saliran Bawah Tanah (Pemasangan)', label: 'Saliran Bawah Tanah', icon: '🚰' }
         ];
 
     services.forEach(service => {
@@ -263,24 +263,24 @@ if (bookingForm) {
         const servicesText = selectedServices.map(s => `• ${s}`).join('\n');
 
         // Create well-formatted WhatsApp message with proper styling
-        const message = `*THELAWN - BOOKING REQUEST*
+        const message = `*THELAWN - PERMINTAAN TEMPAHAN*
 
 ━━━━━━━━━━━━━━━━━━━━━━
 
-*Customer Details*
-• Name: ${name}
-• Phone: ${phone}
-• Email: ${email}
-• Location: ${location}
+*Maklumat Pelanggan*
+• Nama: ${name}
+• Telefon: ${phone}
+• Emel: ${email}
+• Lokasi: ${location}
 
-*Service Request*
+*Permintaan Servis*
 ${servicesText}
 
 ━━━━━━━━━━━━━━━━━━━━━━
 
-I would like to schedule this service at your earliest convenience.
+Saya ingin menjadualkan perkhidmatan ini secepat mungkin.
 
-Looking forward to your confirmation!`;
+Menantikan maklum balas daripada pihak anda!`;
 
         const whatsappUrl = `https://wa.me/601121888274?text=${encodeURIComponent(message)}`;
         window.open(whatsappUrl, '_blank');

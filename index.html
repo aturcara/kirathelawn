@@ -24,11 +24,11 @@
             <nav>
                 <a href="index.html" class="logo">TheLawn</a>
                 <ul class="nav-links">
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#benefits">Why Choose Us</a></li>
-                    <li><a href="areacalc.html">Area Calculator</a></li>
+                    <li><a href="index.html#services">Perkhidmatan</a></li>
+                    <li><a href="index.html#benefits">Kenapa Kami</a></li>
+                    <li><a href="areacalc.html">Kalkulator Laman</a></li>
                     <li><a href="3bulan.html">Set 3 Bulan</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="gallery.html">Galeri</a></li>
                     <li class="nav-social-links">
                         <div class="social-links">
                             <a href="https://wa.me/601121888274?text=Hello, TheLawn!" target="_blank" aria-label="WhatsApp">
@@ -51,7 +51,7 @@
                             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                         </svg>
                     </a>
-                    <a href="#book" class="header-cta">Book Now</a>
+                    <a href="index.html#book" class="header-cta">Tempah Sekarang</a>
                 </div>
                 <button class="mobile-menu-btn">☰</button>
             </nav>
@@ -63,99 +63,99 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1>Professional Lawn Care Services</h1>
-                    <p>Transform your outdoor space with our expert lawn maintenance, landscaping, and care services. Quality results, every time.</p>
+                    <h1>Perkhidmatan Penjagaan Rumput Profesional</h1>
+                    <p>Transformasikan laman anda dengan perkhidmatan penyelenggaraan, lanskap, dan penjagaan rumput kami. Kualiti terjamin.</p>
                 </div>
-                <div class="hero-booking-form">
-                    <h3>Book Your Service</h3>
+                <div class="hero-booking-form fade-in">
+                    <h3>Tempah Perkhidmatan Anda</h3>
                     <form class="booking-form" id="bookingForm">
                         <!-- Step Indicator -->
                         <div class="step-indicator">
                             <div class="step-indicator-item active">
                                 <div class="step-circle">1</div>
-                                <div class="step-label">Service Type</div>
+                                <div class="step-label">Jenis Servis</div>
                             </div>
                             <div class="step-indicator-item">
                                 <div class="step-circle">2</div>
-                                <div class="step-label">Services</div>
+                                <div class="step-label">Servis</div>
                             </div>
                             <div class="step-indicator-item">
                                 <div class="step-circle">3</div>
-                                <div class="step-label">Contact Info</div>
+                                <div class="step-label">Maklumat</div>
                             </div>
                             <div class="step-indicator-item">
                                 <div class="step-circle">4</div>
-                                <div class="step-label">Location</div>
+                                <div class="step-label">Lokasi</div>
                             </div>
                         </div>
 
                         <!-- Step 1: Service Type -->
                         <div class="form-step active" data-step="1">
-                            <h4 style="color: var(--teal-primary); margin-bottom: 0.75rem; text-align: center; font-size: 1.125rem;">Select Service Type</h4>
+                            <h4 style="color: var(--teal-primary); margin-bottom: 0.75rem; text-align: center; font-size: 1.125rem;">Pilih Jenis Servis</h4>
                             <div class="service-type-grid">
                                 <div class="service-type-card" data-type="lawn-care">
 
-                                    <h4>Lawn Care</h4>
-                                    <p>Seeding, aeration, topdressing, mowing, dethatching, and drainage services</p>
+                                    <h4>Penjagaan Rumput</h4>
+                                    <p>Menyemai, pengudaraan, topdressing, memotong, membuang thatch, dan perkhidmatan saliran</p>
                                 </div>
                                 <div class="service-type-card" data-type="grass-installation">
 
-                                    <h4>Grass Installation</h4>
-                                    <p>Professional grass installation with various types including cow, Philippine, pearl, and Japanese grass</p>
+                                    <h4>Pemasangan Rumput</h4>
+                                    <p>Pemasangan rumput profesional dengan pelbagai jenis termasuk rumput cow, Filipina, pearl, dan Jepun</p>
                                 </div>
                             </div>
                             <div class="step-buttons">
-                                <button type="button" class="btn-next" id="step1Next" disabled>Next</button>
+                                <button type="button" class="btn-next" id="step1Next" disabled>Seterusnya</button>
                             </div>
                         </div>
 
                         <!-- Step 2: Service Selection -->
                         <div class="form-step" data-step="2">
-                            <h4 style="color: var(--teal-primary); margin-bottom: 0.75rem; font-size: 1.125rem;">Select Services</h4>
+                            <h4 style="color: var(--teal-primary); margin-bottom: 0.75rem; font-size: 1.125rem;">Pilih Servis</h4>
                             <select id="service" class="booking-form-select" multiple required style="display: none;">
-                                <optgroup label="Lawn Care" id="lawnCareGroup">
-                                    <option value="Seeding">Seeding</option>
-                                    <option value="Aeration">Aeration</option>
+                                <optgroup label="Penjagaan" id="lawnCareGroup">
+                                    <option value="Menyemai">Menyemai (Seeding)</option>
+                                    <option value="Pengudaraan">Pengudaraan (Aeration)</option>
                                     <option value="Topdress">Topdress</option>
-                                    <option value="Mowing">Mowing</option>
-                                    <option value="Dethatch">Dethatch</option>
-                                    <option value="Sprinkler (Lawn Care)">Sprinkler</option>
-                                    <option value="Subsoil Drainage (Lawn Care)">Subsoil Drainage</option>
+                                    <option value="Memotong Rumput">Memotong Rumput</option>
+                                    <option value="Buang Thatch">Buang Thatch (Dethatch)</option>
+                                    <option value="Sistem Renjis (Penjagaan)">Sistem Renjis (Penjagaan)</option>
+                                    <option value="Saliran Bawah Tanah (Penjagaan)">Saliran Bawah Tanah (Penjagaan)</option>
                                 </optgroup>
-                                <optgroup label="Grass Installation" id="grassInstallGroup">
-                                    <option value="Cow Grass Installation">Cow Grass</option>
-                                    <option value="Philippine Grass Installation">Philippine Grass</option>
-                                    <option value="Pearl Grass Installation">Pearl Grass</option>
-                                    <option value="Japanese Grass Installation">Japanese Grass</option>
-                                    <option value="Sprinkler System (Installation)">Sprinkler System</option>
-                                    <option value="Subsoil Drainage (Installation)">Subsoil Drainage</option>
+                                <optgroup label="Pemasangan" id="grassInstallGroup">
+                                    <option value="Rumput Kerbau Pemasangan">Rumput Kerbau</option>
+                                    <option value="Rumput Filipina Pemasangan">Rumput Filipina</option>
+                                    <option value="Rumput Mutiara Pemasangan">Rumput Mutiara</option>
+                                    <option value="Rumput Jepun Pemasangan">Rumput Jepun</option>
+                                    <option value="Sistem Renjis (Pemasangan)">Sistem Renjis</option>
+                                    <option value="Saliran Bawah Tanah (Pemasangan)">Saliran Bawah Tanah</option>
                                 </optgroup>
-                                <option value="Other">Other</option>
+                                <option value="Other">Lain-lain</option>
                             </select>
                             <div id="serviceCheckboxes"></div>
                             <div class="step-buttons">
-                                <button type="button" class="btn-prev">Previous</button>
-                                <button type="button" class="btn-next" id="step2Next" disabled>Next</button>
+                                <button type="button" class="btn-prev">Kembali</button>
+                                <button type="button" class="btn-next" id="step2Next" disabled>Seterusnya</button>
                             </div>
                         </div>
 
                         <!-- Step 3: Contact Information -->
                         <div class="form-step" data-step="3">
-                            <h4 style="color: var(--teal-primary); margin-bottom: 0.75rem; font-size: 1.125rem;">Your Contact Information</h4>
-                            <input type="text" id="name" class="booking-form-input" placeholder="Your Name" required style="width: 100%; margin-bottom: 0.5rem;">
-                            <input type="tel" id="phone" class="booking-form-input" placeholder="Phone Number" required style="width: 100%; margin-bottom: 0.5rem;">
-                            <input type="email" id="email" class="booking-form-input" placeholder="Email Address" required style="width: 100%;">
+                            <h4 style="color: var(--teal-primary); margin-bottom: 0.75rem; font-size: 1.125rem;">Maklumat Hubungan Anda</h4>
+                            <input type="text" id="name" class="booking-form-input" placeholder="Nama Anda" required style="width: 100%; margin-bottom: 0.5rem;">
+                            <input type="tel" id="phone" class="booking-form-input" placeholder="Nombor Telefon" required style="width: 100%; margin-bottom: 0.5rem;">
+                            <input type="email" id="email" class="booking-form-input" placeholder="Alamat Emel" required style="width: 100%;">
                             <div class="step-buttons">
-                                <button type="button" class="btn-prev">Previous</button>
-                                <button type="button" class="btn-next" id="step3Next" disabled>Next</button>
+                                <button type="button" class="btn-prev">Kembali</button>
+                                <button type="button" class="btn-next" id="step3Next" disabled>Seterusnya</button>
                             </div>
                         </div>
 
                         <!-- Step 4: Location -->
                         <div class="form-step" data-step="4">
-                            <h4 style="color: var(--teal-primary); margin-bottom: 0.75rem; font-size: 1.125rem;">Service Location</h4>
+                            <h4 style="color: var(--teal-primary); margin-bottom: 0.75rem; font-size: 1.125rem;">Lokasi Servis</h4>
                             <select id="state" class="booking-form-input" required style="width: 100%; margin-bottom: 0.5rem;">
-                                <option value="">Select State</option>
+                                <option value="">Pilih Negeri</option>
                                 <option value="WP Kuala Lumpur">W.P. Kuala Lumpur</option>
                                 <option value="WP Putrajaya">W.P. Putrajaya</option>
                                 <option value="WP Labuan">W.P. Labuan</option>
@@ -163,7 +163,7 @@
                                 <option value="Johor">Johor</option>
                                 <option value="Melaka">Melaka</option>
                                 <option value="Negeri Sembilan">Negeri Sembilan</option>
-                                <option value="Penang">Penang</option>
+                                <option value="Penang">Pulau Pinang</option>
                                 <option value="Perak">Perak</option>
                                 <option value="Kedah">Kedah</option>
                                 <option value="Perlis">Perlis</option>
@@ -174,12 +174,12 @@
                                 <option value="Sarawak">Sarawak</option>
                             </select>
                             <select id="area" class="booking-form-input" required style="width: 100%;" disabled>
-                                <option value="">Select Area</option>
+                                <option value="">Pilih Kawasan</option>
                             </select>
                             <input type="hidden" id="location" required>
                             <div class="step-buttons">
-                                <button type="button" class="btn-prev">Previous</button>
-                                <button type="submit" class="btn-next">Request Booking</button>
+                                <button type="button" class="btn-prev">Kembali</button>
+                                <button type="submit" class="btn-next">Minta Tempahan</button>
                             </div>
                         </div>
                     </form>
@@ -194,8 +194,8 @@
             <!-- Left Column: Header & Navigation -->
             <div class="services-left">
                 <div class="services-left-inner">
-                    <h2>Our Services</h2>
-                    <p>Professional lawn care and grass installation services tailored to your needs</p>
+                    <h2>Perkhidmatan Kami</h2>
+                    <p>Perkhidmatan penjagaan rumput dan pemasangan rumput profesional yang disesuaikan dengan keperluan anda</p>
 
                     <div class="carousel-nav-left">
                         <button class="carousel-btn" onclick="scrollCarousel(-1)">‹</button>
@@ -211,342 +211,456 @@
                         <!-- First set of cards -->
                         <div class="service-card">
                             <div class="service-card-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1661932971080-c6ec2a91f64c?w=300&auto=format&fit=crop');">
-                                <span class="service-category lawn-care">Lawn Care</span>
+                                <span class="service-category lawn-care">Penjagaan</span>
                             </div>
                             <div class="service-card-content">
-                                <h3>Seeding</h3>
-                                <p>Professional grass seeding services to establish a thick, healthy lawn with optimal seed selection and application.</p>
-                                <a href="#book" class="service-link">Book Now →</a>
+                                <h3>Menyemai</h3>
+                                <p>Perkhidmatan menyemai rumput profesional untuk membina laman yang tebal dan sihat dengan pemilihan benih optimum.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
                             </div>
                         </div>
                         <div class="service-card">
                             <div class="service-card-image" style="background-image: url('https://images.unsplash.com/photo-1647896726251-f37477a85bb2?w=300&auto=format&fit=crop');">
-                                <span class="service-category lawn-care">Lawn Care</span>
+                                <span class="service-category lawn-care">Penjagaan</span>
                             </div>
                             <div class="service-card-content">
-                                <h3>Aeration</h3>
-                                <p>Core aeration to improve soil compaction, enhance root growth, and boost nutrient absorption for a healthier lawn.</p>
-                                <a href="#book" class="service-link">Book Now →</a>
+                                <h3>Pengudaraan</h3>
+                                <p>Pengudaraan teras untuk memperbaiki pemadatan tanah, merangsang pertumbuhan akar, dan menyerap nutrien.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
                             </div>
                         </div>
                         <div class="service-card">
                             <div class="service-card-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1680658497681-475c0f851f09?w=500&auto=format&fit=crop');">
-                                <span class="service-category lawn-care">Lawn Care</span>
+                                <span class="service-category lawn-care">Penjagaan</span>
                             </div>
                             <div class="service-card-content">
                                 <h3>Topdress</h3>
-                                <p>Premium topdressing application to level your lawn, improve soil quality, and promote vigorous grass growth.</p>
-                                <a href="#book" class="service-link">Book Now →</a>
+                                <p>Aplikasi topdressing premium untuk meratakan laman anda, memperbaiki kualiti tanah, dan menggalakkan pertumbuhan rumput.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
                             </div>
                         </div>
                         <div class="service-card">
                             <div class="service-card-image" style="background-image: url('https://images.unsplash.com/photo-1748893790747-fc2646924cbe?w=300&auto=format&fit=crop');">
-                                <span class="service-category lawn-care">Lawn Care</span>
+                                <span class="service-category lawn-care">Penjagaan</span>
                             </div>
                             <div class="service-card-content">
-                                <h3>Mowing</h3>
-                                <p>Regular professional mowing services to maintain optimal grass height and keep your lawn looking pristine.</p>
-                                <a href="#book" class="service-link">Book Now →</a>
+                                <h3>Memotong Rumput</h3>
+                                <p>Perkhidmatan memotong rumput profesional berkala untuk mengekalkan ketinggian rumput optimum dan rupa yang kemas.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
                             </div>
                         </div>
                         <div class="service-card">
                             <div class="service-card-image" style="background-image: url('https://images.unsplash.com/photo-1696402446058-76a4e2246fb0?w=300&auto=format&fit=crop');">
-                                <span class="service-category lawn-care">Lawn Care</span>
+                                <span class="service-category lawn-care">Penjagaan</span>
                             </div>
                             <div class="service-card-content">
                                 <h3>Dethatch</h3>
-                                <p>Remove built-up thatch layer to improve water and nutrient penetration, ensuring better lawn health.</p>
-                                <a href="#book" class="service-link">Book Now →</a>
+                                <p>Membuang lapisan thatch yang terkumpul untuk meningkatkan penembusan air dan nutrien, memastikan kesihatan rumput.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
                             </div>
                         </div>
                         <div class="service-card">
                             <div class="service-card-image" style="background-image: url('https://images.unsplash.com/photo-1754815987966-e09fb95e9179?w=300&auto=format&fit=crop');">
-                                <span class="service-category">Grass Install</span>
+                                <span class="service-category">Pasang Rumput</span>
                             </div>
                             <div class="service-card-content">
-                                <h3>Cow Grass</h3>
-                                <p>Durable and low-maintenance cow grass installation, perfect for Malaysian climate with excellent wear tolerance.</p>
-                                <a href="#book" class="service-link">Book Now →</a>
+                                <h3>Rumput Rumput Kerbau</h3>
+                                <p>Pemasangan rumput kerbau yang tahan lasak dan kurang penyelenggaraan, sesuai untuk iklim Malaysia.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
                             </div>
                         </div>
                         <div class="service-card">
                             <div class="service-card-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1678677946745-47819646a87e?w=300&auto=format&fit=crop');">
-                                <span class="service-category">Grass Install</span>
+                                <span class="service-category">Pasang Rumput</span>
                             </div>
                             <div class="service-card-content">
-                                <h3>Philippine Grass</h3>
-                                <p>Soft, fine-textured Philippine grass ideal for residential lawns, offering lush green coverage year-round.</p>
-                                <a href="#book" class="service-link">Book Now →</a>
+                                <h3>Rumput Filipina</h3>
+                                <p>Rumput Filipina yang lembut dan halus, sesuai untuk laman kediaman, menawarkan litupan hijau sepanjang tahun.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
                             </div>
                         </div>
                         <div class="service-card">
                             <div class="service-card-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1661412696440-044ac49f9cf4?w=300&auto=format&fit=crop');">
-                                <span class="service-category">Grass Install</span>
+                                <span class="service-category">Pasang Rumput</span>
                             </div>
                             <div class="service-card-content">
-                                <h3>Pearl Grass</h3>
-                                <p>Premium pearl grass with dense, carpet-like texture for a luxurious, high-quality lawn appearance.</p>
-                                <a href="#book" class="service-link">Book Now →</a>
+                                <h3>Rumput Mutiara</h3>
+                                <p>Rumput mutiara premium dengan tekstur padat seperti karpet untuk penampilan laman yang mewah dan berkualiti tinggi.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
                             </div>
                         </div>
                         <div class="service-card">
                             <div class="service-card-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1725408037993-f891474828c9?w=300&auto=format&fit=crop');">
-                                <span class="service-category">Grass Install</span>
+                                <span class="service-category">Pasang Rumput</span>
                             </div>
                             <div class="service-card-content">
-                                <h3>Japanese Grass</h3>
-                                <p>Fine-bladed Japanese grass delivering elegant aesthetics with superior softness and vibrant green color.</p>
-                                <a href="#book" class="service-link">Book Now →</a>
+                                <h3>Rumput Jepun</h3>
+                                <p>Rumput Jepun berbilah halus memberikan estetika elegan with kelembutan luar biasa dan warna hijau yang menyerlah.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
                             </div>
                         </div>
                         <div class="service-card">
                             <div class="service-card-image" style="background-image: url('https://images.unsplash.com/photo-1630862338638-6cf93f610dd8?w=300&auto=format&fit=crop');">
-                                <span class="service-category lawn-care">Lawn Care</span>
-                                <span class="service-category">Grass Install</span>
+                                <span class="service-category lawn-care">Penjagaan</span>
+                                <span class="service-category">Pasang Rumput</span>
                             </div>
                             <div class="service-card-content">
-                                <h3>Sprinkler System</h3>
-                                <p>Complete sprinkler installation with your new grass for optimal watering and long-term lawn health.</p>
-                                <a href="#book" class="service-link">Book Now →</a>
+                                <h3>Sistem Renjis</h3>
+                                <p>Pemasangan sistem renjis lengkap untuk memastikan penyiraman yang sekata dan kesihatan rumput jangka panjang.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
                             </div>
                         </div>
                         <div class="service-card">
                             <div class="service-card-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1678677946836-4bd6147344c5?w=300&auto=format&fit=crop');">
-                                <span class="service-category lawn-care">Lawn Care</span>
-                                <span class="service-category">Grass Install</span>
+                                <span class="service-category lawn-care">Penjagaan</span>
+                                <span class="service-category">Pasang Rumput</span>
                             </div>
                             <div class="service-card-content">
-                                <h3>Subsoil Drainage</h3>
-                                <p>Professional drainage system installation to prevent water accumulation and protect your new grass investment.</p>
-                                <a href="#book" class="service-link">Book Now →</a>
+                                <h3>Saliran Bawah Tanah</h3>
+                                <p>Pemasangan sistem saliran profesional untuk mencegah takungan air dan melindungi pelaburan rumput baru anda.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
                             </div>
                         </div>
                         <!-- Duplicate set for seamless loop -->
                         <div class="service-card">
                             <div class="service-card-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1661932971080-c6ec2a91f64c?w=300&auto=format&fit=crop');">
-                                <span class="service-category lawn-care">Lawn Care</span>
+                                <span class="service-category lawn-care">Penjagaan</span>
                             </div>
                             <div class="service-card-content">
-                                <h3>Seeding</h3>
-                                <p>Professional grass seeding services to establish a thick, healthy lawn with optimal seed selection and application.</p>
-                                <a href="#book" class="service-link">Book Now →</a>
+                                <h3>Menyemai</h3>
+                                <p>Perkhidmatan menyemai rumput profesional untuk membina laman yang tebal dan sihat dengan pemilihan benih optimum.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
                             </div>
                         </div>
                         <div class="service-card">
                             <div class="service-card-image" style="background-image: url('https://images.unsplash.com/photo-1647896726251-f37477a85bb2?w=300&auto=format&fit=crop');">
-                                <span class="service-category lawn-care">Lawn Care</span>
+                                <span class="service-category lawn-care">Penjagaan</span>
                             </div>
                             <div class="service-card-content">
-                                <h3>Aeration</h3>
-                                <p>Core aeration to improve soil compaction, enhance root growth, and boost nutrient absorption for a healthier lawn.</p>
-                                <a href="#book" class="service-link">Book Now →</a>
+                                <h3>Pengudaraan</h3>
+                                <p>Pengudaraan teras untuk memperbaiki pemadatan tanah, merangsang pertumbuhan akar, dan menyerap nutrien.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
                             </div>
                         </div>
                         <div class="service-card">
                             <div class="service-card-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1680658497681-475c0f851f09?w=500&auto=format&fit=crop');">
-                                <span class="service-category lawn-care">Lawn Care</span>
+                                <span class="service-category lawn-care">Penjagaan</span>
                             </div>
                             <div class="service-card-content">
                                 <h3>Topdress</h3>
-                                <p>Premium topdressing application to level your lawn, improve soil quality, and promote vigorous grass growth.</p>
-                                <a href="#book" class="service-link">Book Now →</a>
+                                <p>Aplikasi topdressing premium untuk meratakan laman anda, memperbaiki kualiti tanah, dan menggalakkan pertumbuhan rumput.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
                             </div>
                         </div>
                         <div class="service-card">
                             <div class="service-card-image" style="background-image: url('https://images.unsplash.com/photo-1748893790747-fc2646924cbe?w=300&auto=format&fit=crop');">
-                                <span class="service-category lawn-care">Lawn Care</span>
+                                <span class="service-category lawn-care">Penjagaan</span>
                             </div>
                             <div class="service-card-content">
-                                <h3>Mowing</h3>
-                                <p>Regular professional mowing services to maintain optimal grass height and keep your lawn looking pristine.</p>
-                                <a href="#book" class="service-link">Book Now →</a>
+                                <h3>Memotong Rumput</h3>
+                                <p>Perkhidmatan memotong rumput profesional berkala untuk mengekalkan ketinggian rumput optimum dan rupa yang kemas.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
                             </div>
                         </div>
                         <div class="service-card">
                             <div class="service-card-image" style="background-image: url('https://images.unsplash.com/photo-1696402446058-76a4e2246fb0?w=300&auto=format&fit=crop');">
-                                <span class="service-category lawn-care">Lawn Care</span>
+                                <span class="service-category lawn-care">Penjagaan</span>
                             </div>
                             <div class="service-card-content">
                                 <h3>Dethatch</h3>
-                                <p>Remove built-up thatch layer to improve water and nutrient penetration, ensuring better lawn health.</p>
-                                <a href="#book" class="service-link">Book Now →</a>
+                                <p>Membuang lapisan thatch yang terkumpul untuk meningkatkan penembusan air dan nutrien, memastikan kesihatan rumput.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
                             </div>
                         </div>
                         <div class="service-card">
                             <div class="service-card-image" style="background-image: url('https://images.unsplash.com/photo-1754815987966-e09fb95e9179?w=300&auto=format&fit=crop');">
-                                <span class="service-category">Grass Install</span>
+                                <span class="service-category">Pasang Rumput</span>
                             </div>
                             <div class="service-card-content">
-                                <h3>Cow Grass</h3>
-                                <p>Durable and low-maintenance cow grass installation, perfect for Malaysian climate with excellent wear tolerance.</p>
-                                <a href="#book" class="service-link">Book Now →</a>
+                                <h3>Rumput Rumput Kerbau</h3>
+                                <p>Pemasangan rumput kerbau yang tahan lasak dan kurang penyelenggaraan, sesuai untuk iklim Malaysia.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
                             </div>
                         </div>
                         <div class="service-card">
                             <div class="service-card-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1678677946745-47819646a87e?w=300&auto=format&fit=crop');">
-                                <span class="service-category">Grass Install</span>
+                                <span class="service-category">Pasang Rumput</span>
                             </div>
                             <div class="service-card-content">
-                                <h3>Philippine Grass</h3>
-                                <p>Soft, fine-textured Philippine grass ideal for residential lawns, offering lush green coverage year-round.</p>
-                                <a href="#book" class="service-link">Book Now →</a>
+                                <h3>Rumput Filipina</h3>
+                                <p>Rumput Filipina yang lembut dan halus, sesuai untuk laman kediaman, menawarkan litupan hijau sepanjang tahun.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
                             </div>
                         </div>
                         <div class="service-card">
                             <div class="service-card-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1661412696440-044ac49f9cf4?w=300&auto=format&fit=crop');">
-                                <span class="service-category">Grass Install</span>
+                                <span class="service-category">Pasang Rumput</span>
                             </div>
                             <div class="service-card-content">
-                                <h3>Pearl Grass</h3>
-                                <p>Premium pearl grass with dense, carpet-like texture for a luxurious, high-quality lawn appearance.</p>
-                                <a href="#book" class="service-link">Book Now →</a>
+                                <h3>Rumput Mutiara</h3>
+                                <p>Rumput mutiara premium dengan tekstur padat seperti karpet untuk penampilan laman yang mewah dan berkualiti tinggi.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
                             </div>
                         </div>
                         <div class="service-card">
                             <div class="service-card-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1725408037993-f891474828c9?w=300&auto=format&fit=crop');">
-                                <span class="service-category">Grass Install</span>
+                                <span class="service-category">Pasang Rumput</span>
                             </div>
                             <div class="service-card-content">
-                                <h3>Japanese Grass</h3>
-                                <p>Fine-bladed Japanese grass delivering elegant aesthetics with superior softness and vibrant green color.</p>
-                                <a href="#book" class="service-link">Book Now →</a>
+                                <h3>Rumput Jepun</h3>
+                                <p>Rumput Jepun berbilah halus memberikan estetika elegan with kelembutan luar biasa dan warna hijau yang menyerlah.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
                             </div>
                         </div>
                         <div class="service-card">
                             <div class="service-card-image" style="background-image: url('https://images.unsplash.com/photo-1630862338638-6cf93f610dd8?w=300&auto=format&fit=crop');">
-                                <span class="service-category lawn-care">Lawn Care</span>
-                                <span class="service-category">Grass Install</span>
+                                <span class="service-category lawn-care">Penjagaan</span>
+                                <span class="service-category">Pasang Rumput</span>
                             </div>
                             <div class="service-card-content">
-                                <h3>Sprinkler System</h3>
-                                <p>Complete sprinkler installation with your new grass for optimal watering and long-term lawn health.</p>
-                                <a href="#book" class="service-link">Book Now →</a>
+                                <h3>Sistem Renjis</h3>
+                                <p>Pemasangan sistem renjis lengkap untuk memastikan penyiraman yang sekata dan kesihatan rumput jangka panjang.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
                             </div>
                         </div>
                         <div class="service-card">
                             <div class="service-card-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1678677946836-4bd6147344c5?w=300&auto=format&fit=crop');">
-                                <span class="service-category lawn-care">Lawn Care</span>
-                                <span class="service-category">Grass Install</span>
+                                <span class="service-category lawn-care">Penjagaan</span>
+                                <span class="service-category">Pasang Rumput</span>
                             </div>
                             <div class="service-card-content">
-                                <h3>Subsoil Drainage</h3>
-                                <p>Professional drainage system installation to prevent water accumulation and protect your new grass investment.</p>
-                                <a href="#book" class="service-link">Book Now →</a>
+                                <h3>Saliran Bawah Tanah</h3>
+                                <p>Pemasangan sistem saliran profesional untuk mencegah takungan air dan melindungi pelaburan rumput baru anda.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
                             </div>
                         </div>
                         <!-- Duplicate set for seamless loop -->
                         <div class="service-card">
                             <div class="service-card-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1661932971080-c6ec2a91f64c?w=300&auto=format&fit=crop');">
-                                <span class="service-category lawn-care">Lawn Care</span>
+                                <span class="service-category lawn-care">Penjagaan</span>
                             </div>
                             <div class="service-card-content">
-                                <h3>Seeding</h3>
-                                <p>Professional grass seeding services to establish a thick, healthy lawn with optimal seed selection and application.</p>
-                                <a href="#book" class="service-link">Book Now →</a>
+                                <h3>Menyemai</h3>
+                                <p>Perkhidmatan menyemai rumput profesional untuk membina laman yang tebal dan sihat dengan pemilihan benih optimum.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
                             </div>
                         </div>
                         <div class="service-card">
                             <div class="service-card-image" style="background-image: url('https://images.unsplash.com/photo-1647896726251-f37477a85bb2?w=300&auto=format&fit=crop');">
-                                <span class="service-category lawn-care">Lawn Care</span>
+                                <span class="service-category lawn-care">Penjagaan</span>
                             </div>
                             <div class="service-card-content">
-                                <h3>Aeration</h3>
-                                <p>Core aeration to improve soil compaction, enhance root growth, and boost nutrient absorption for a healthier lawn.</p>
-                                <a href="#book" class="service-link">Book Now →</a>
+                                <h3>Pengudaraan</h3>
+                                <p>Pengudaraan teras untuk memperbaiki pemadatan tanah, merangsang pertumbuhan akar, dan menyerap nutrien.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
                             </div>
                         </div>
                         <div class="service-card">
                             <div class="service-card-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1680658497681-475c0f851f09?w=500&auto=format&fit=crop');">
-                                <span class="service-category lawn-care">Lawn Care</span>
+                                <span class="service-category lawn-care">Penjagaan</span>
                             </div>
                             <div class="service-card-content">
                                 <h3>Topdress</h3>
-                                <p>Premium topdressing application to level your lawn, improve soil quality, and promote vigorous grass growth.</p>
-                                <a href="#book" class="service-link">Book Now →</a>
+                                <p>Aplikasi topdressing premium untuk meratakan laman anda, memperbaiki kualiti tanah, dan menggalakkan pertumbuhan rumput.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
                             </div>
                         </div>
                         <div class="service-card">
                             <div class="service-card-image" style="background-image: url('https://images.unsplash.com/photo-1748893790747-fc2646924cbe?w=300&auto=format&fit=crop');">
-                                <span class="service-category lawn-care">Lawn Care</span>
+                                <span class="service-category lawn-care">Penjagaan</span>
                             </div>
                             <div class="service-card-content">
-                                <h3>Mowing</h3>
-                                <p>Regular professional mowing services to maintain optimal grass height and keep your lawn looking pristine.</p>
-                                <a href="#book" class="service-link">Book Now →</a>
+                                <h3>Memotong Rumput</h3>
+                                <p>Perkhidmatan memotong rumput profesional berkala untuk mengekalkan ketinggian rumput optimum dan rupa yang kemas.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
                             </div>
                         </div>
                         <div class="service-card">
                             <div class="service-card-image" style="background-image: url('https://images.unsplash.com/photo-1696402446058-76a4e2246fb0?w=300&auto=format&fit=crop');">
-                                <span class="service-category lawn-care">Lawn Care</span>
+                                <span class="service-category lawn-care">Penjagaan</span>
                             </div>
                             <div class="service-card-content">
                                 <h3>Dethatch</h3>
-                                <p>Remove built-up thatch layer to improve water and nutrient penetration, ensuring better lawn health.</p>
-                                <a href="#book" class="service-link">Book Now →</a>
+                                <p>Membuang lapisan thatch yang terkumpul untuk meningkatkan penembusan air dan nutrien, memastikan kesihatan rumput.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
                             </div>
                         </div>
                         <div class="service-card">
                             <div class="service-card-image" style="background-image: url('https://images.unsplash.com/photo-1754815987966-e09fb95e9179?w=300&auto=format&fit=crop');">
-                                <span class="service-category">Grass Install</span>
+                                <span class="service-category">Pasang Rumput</span>
                             </div>
                             <div class="service-card-content">
-                                <h3>Cow Grass</h3>
-                                <p>Durable and low-maintenance cow grass installation, perfect for Malaysian climate with excellent wear tolerance.</p>
-                                <a href="#book" class="service-link">Book Now →</a>
+                                <h3>Rumput Rumput Kerbau</h3>
+                                <p>Pemasangan rumput kerbau yang tahan lasak dan kurang penyelenggaraan, sesuai untuk iklim Malaysia.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
                             </div>
                         </div>
                         <div class="service-card">
                             <div class="service-card-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1678677946745-47819646a87e?w=300&auto=format&fit=crop');">
-                                <span class="service-category">Grass Install</span>
+                                <span class="service-category">Pasang Rumput</span>
                             </div>
                             <div class="service-card-content">
-                                <h3>Philippine Grass</h3>
-                                <p>Soft, fine-textured Philippine grass ideal for residential lawns, offering lush green coverage year-round.</p>
-                                <a href="#book" class="service-link">Book Now →</a>
+                                <h3>Rumput Filipina</h3>
+                                <p>Rumput Filipina yang lembut dan halus, sesuai untuk laman kediaman, menawarkan litupan hijau sepanjang tahun.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
                             </div>
                         </div>
                         <div class="service-card">
                             <div class="service-card-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1661412696440-044ac49f9cf4?w=300&auto=format&fit=crop');">
-                                <span class="service-category">Grass Install</span>
+                                <span class="service-category">Pasang Rumput</span>
                             </div>
                             <div class="service-card-content">
-                                <h3>Pearl Grass</h3>
-                                <p>Premium pearl grass with dense, carpet-like texture for a luxurious, high-quality lawn appearance.</p>
-                                <a href="#book" class="service-link">Book Now →</a>
+                                <h3>Rumput Mutiara</h3>
+                                <p>Rumput mutiara premium dengan tekstur padat seperti karpet untuk penampilan laman yang mewah dan berkualiti tinggi.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
                             </div>
                         </div>
                         <div class="service-card">
                             <div class="service-card-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1725408037993-f891474828c9?w=300&auto=format&fit=crop');">
-                                <span class="service-category">Grass Install</span>
+                                <span class="service-category">Pasang Rumput</span>
                             </div>
                             <div class="service-card-content">
-                                <h3>Japanese Grass</h3>
-                                <p>Fine-bladed Japanese grass delivering elegant aesthetics with superior softness and vibrant green color.</p>
-                                <a href="#book" class="service-link">Book Now →</a>
+                                <h3>Rumput Jepun</h3>
+                                <p>Rumput Jepun berbilah halus memberikan estetika elegan with kelembutan luar biasa dan warna hijau yang menyerlah.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
                             </div>
                         </div>
                         <div class="service-card">
                             <div class="service-card-image" style="background-image: url('https://images.unsplash.com/photo-1630862338638-6cf93f610dd8?w=300&auto=format&fit=crop');">
-                                <span class="service-category lawn-care">Lawn Care</span>
-                                <span class="service-category">Grass Install</span>
+                                <span class="service-category lawn-care">Penjagaan</span>
+                                <span class="service-category">Pasang Rumput</span>
                             </div>
                             <div class="service-card-content">
-                                <h3>Sprinkler System</h3>
-                                <p>Complete sprinkler installation with your new grass for optimal watering and long-term lawn health.</p>
-                                <a href="#book" class="service-link">Book Now →</a>
+                                <h3>Sistem Renjis</h3>
+                                <p>Pemasangan sistem renjis lengkap untuk memastikan penyiraman yang sekata dan kesihatan rumput jangka panjang.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
                             </div>
                         </div>
                         <div class="service-card">
                             <div class="service-card-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1678677946836-4bd6147344c5?w=300&auto=format&fit=crop');">
-                                <span class="service-category lawn-care">Lawn Care</span>
-                                <span class="service-category">Grass Install</span>
+                                <span class="service-category lawn-care">Penjagaan</span>
+                                <span class="service-category">Pasang Rumput</span>
                             </div>
                             <div class="service-card-content">
-                                <h3>Subsoil Drainage</h3>
-                                <p>Professional drainage system installation to prevent water accumulation and protect your new grass investment.</p>
-                                <a href="#book" class="service-link">Book Now →</a>
+                                <h3>Saliran Bawah Tanah</h3>
+                                <p>Pemasangan sistem saliran profesional untuk mencegah takungan air dan melindungi pelaburan rumput baru anda.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
                             </div>
                         </div>
+                        <!--Third Dupe-->
+                        <div class="service-card">
+                            <div class="service-card-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1661932971080-c6ec2a91f64c?w=300&auto=format&fit=crop');">
+                                <span class="service-category lawn-care">Penjagaan</span>
+                            </div>
+                            <div class="service-card-content">
+                                <h3>Menyemai</h3>
+                                <p>Perkhidmatan menyemai rumput profesional untuk membina laman yang tebal dan sihat dengan pemilihan benih optimum.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-card-image" style="background-image: url('https://images.unsplash.com/photo-1647896726251-f37477a85bb2?w=300&auto=format&fit=crop');">
+                                <span class="service-category lawn-care">Penjagaan</span>
+                            </div>
+                            <div class="service-card-content">
+                                <h3>Pengudaraan</h3>
+                                <p>Pengudaraan teras untuk memperbaiki pemadatan tanah, merangsang pertumbuhan akar, dan menyerap nutrien.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-card-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1680658497681-475c0f851f09?w=500&auto=format&fit=crop');">
+                                <span class="service-category lawn-care">Penjagaan</span>
+                            </div>
+                            <div class="service-card-content">
+                                <h3>Topdress</h3>
+                                <p>Aplikasi topdressing premium untuk meratakan laman anda, memperbaiki kualiti tanah, dan menggalakkan pertumbuhan rumput.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-card-image" style="background-image: url('https://images.unsplash.com/photo-1748893790747-fc2646924cbe?w=300&auto=format&fit=crop');">
+                                <span class="service-category lawn-care">Penjagaan</span>
+                            </div>
+                            <div class="service-card-content">
+                                <h3>Memotong Rumput</h3>
+                                <p>Perkhidmatan memotong rumput profesional berkala untuk mengekalkan ketinggian rumput optimum dan rupa yang kemas.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-card-image" style="background-image: url('https://images.unsplash.com/photo-1696402446058-76a4e2246fb0?w=300&auto=format&fit=crop');">
+                                <span class="service-category lawn-care">Penjagaan</span>
+                            </div>
+                            <div class="service-card-content">
+                                <h3>Dethatch</h3>
+                                <p>Membuang lapisan thatch yang terkumpul untuk meningkatkan penembusan air dan nutrien, memastikan kesihatan rumput.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-card-image" style="background-image: url('https://images.unsplash.com/photo-1754815987966-e09fb95e9179?w=300&auto=format&fit=crop');">
+                                <span class="service-category">Pasang Rumput</span>
+                            </div>
+                            <div class="service-card-content">
+                                <h3>Rumput Rumput Kerbau</h3>
+                                <p>Pemasangan rumput kerbau yang tahan lasak dan kurang penyelenggaraan, sesuai untuk iklim Malaysia.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-card-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1678677946745-47819646a87e?w=300&auto=format&fit=crop');">
+                                <span class="service-category">Pasang Rumput</span>
+                            </div>
+                            <div class="service-card-content">
+                                <h3>Rumput Filipina</h3>
+                                <p>Rumput Filipina yang lembut dan halus, sesuai untuk laman kediaman, menawarkan litupan hijau sepanjang tahun.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-card-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1661412696440-044ac49f9cf4?w=300&auto=format&fit=crop');">
+                                <span class="service-category">Pasang Rumput</span>
+                            </div>
+                            <div class="service-card-content">
+                                <h3>Rumput Mutiara</h3>
+                                <p>Rumput mutiara premium dengan tekstur padat seperti karpet untuk penampilan laman yang mewah dan berkualiti tinggi.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-card-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1725408037993-f891474828c9?w=300&auto=format&fit=crop');">
+                                <span class="service-category">Pasang Rumput</span>
+                            </div>
+                            <div class="service-card-content">
+                                <h3>Rumput Jepun</h3>
+                                <p>Rumput Jepun berbilah halus memberikan estetika elegan with kelembutan luar biasa dan warna hijau yang menyerlah.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-card-image" style="background-image: url('https://images.unsplash.com/photo-1630862338638-6cf93f610dd8?w=300&auto=format&fit=crop');">
+                                <span class="service-category lawn-care">Penjagaan</span>
+                                <span class="service-category">Pasang Rumput</span>
+                            </div>
+                            <div class="service-card-content">
+                                <h3>Sistem Renjis</h3>
+                                <p>Pemasangan sistem renjis lengkap untuk memastikan penyiraman yang sekata dan kesihatan rumput jangka panjang.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-card-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1678677946836-4bd6147344c5?w=300&auto=format&fit=crop');">
+                                <span class="service-category lawn-care">Penjagaan</span>
+                                <span class="service-category">Pasang Rumput</span>
+                            </div>
+                            <div class="service-card-content">
+                                <h3>Saliran Bawah Tanah</h3>
+                                <p>Pemasangan sistem saliran profesional untuk mencegah takungan air dan melindungi pelaburan rumput baru anda.</p>
+                                <a href="#book" class="service-link">Tempah Sekarang →</a>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -569,47 +683,47 @@
 
     <!-- Calculator CTA -->
     <section class="calculator-cta">
-        <div class="container">
-            <h2>Calculate Your Lawn Area</h2>
-            <p>Use our interactive map tool to measure your lawn area and get an accurate service estimate.</p>
-            <a href="areacalc.html" class="calculator-cta-btn">Open Area Calculator</a>
+        <div class="container fade-up">
+            <h2>Kira Keluasan Laman Anda</h2>
+            <p>Gunakan alat peta interaktif kami untuk mengukur keluasan laman anda dan dapatkan anggaran perkhidmatan yang tepat.</p>
+            <a href="areacalc.html" class="calculator-cta-btn">Kalkulator Laman</a>
         </div>
     </section>
 
     <!-- Benefits Section -->
     <section class="benefits-section" id="benefits">
         <div class="container">
-            <div class="section-header">
-                <h2>Why Choose Us</h2>
-                <p>Experience the difference with our professional lawn care services</p>
+            <div class="section-header fade-up">
+                <h2>Kenapa Pilih Kami</h2>
+                <p>Alami perbezaan dengan perkhidmatan penjagaan rumput profesional kami</p>
             </div>
             <div class="benefits-grid">
-                <div class="benefit-item">
+                <div class="benefit-item fade-up stagger-1">
                     <div class="benefit-icon">✓</div>
                     <div class="benefit-content">
-                        <h3>Professional Team</h3>
-                        <p>Our experienced team brings expertise and attention to detail to every job, ensuring your lawn looks its absolute best.</p>
+                        <h3>Pasukan Profesional</h3>
+                        <p>Pasukan kami yang berpengalaman membawa kepakaran dan perhatian terhadap perincian untuk setiap kerja, memastikan laman anda kelihatan terbaik.</p>
                     </div>
                 </div>
-                <div class="benefit-item">
+                <div class="benefit-item fade-up stagger-2">
                     <div class="benefit-icon">⚡</div>
                     <div class="benefit-content">
-                        <h3>Fast & Reliable</h3>
-                        <p>We respect your time with punctual service and efficient work that doesn't compromise on quality.</p>
+                        <h3>Pantas & Boleh Dipercayai</h3>
+                        <p>Kami menghargai masa anda dengan perkhidmatan yang tepat pada masanya dan kerja yang cekap tanpa menjejaskan kualiti.</p>
                     </div>
                 </div>
-                <div class="benefit-item">
+                <div class="benefit-item fade-up stagger-3">
                     <div class="benefit-icon">💰</div>
                     <div class="benefit-content">
-                        <h3>Competitive Pricing</h3>
-                        <p>Get premium lawn care services at fair, transparent prices with no hidden fees.</p>
+                        <h3>Harga Kompetitif</h3>
+                        <p>Dapatkan perkhidmatan penjagaan rumput premium dengan harga yang berpatutan dan telus tanpa caj tersembunyi.</p>
                     </div>
                 </div>
-                <div class="benefit-item">
+                <div class="benefit-item fade-up stagger-4">
                     <div class="benefit-icon">🌟</div>
                     <div class="benefit-content">
-                        <h3>Quality Guaranteed</h3>
-                        <p>We stand behind our work with a satisfaction guarantee. Your beautiful lawn is our priority.</p>
+                        <h3>Kualiti Dijamin</h3>
+                        <p>Kami menjamin hasil kerja kami dengan jaminan kepuasan. Laman cantik anda adalah keutamaan kami.</p>
                     </div>
                 </div>
             </div>
@@ -618,10 +732,10 @@
 
     <!-- Client Logos Section -->
     <section class="clients-section">
-        <div class="container">
+        <div class="container fade-up">
             <div class="clients-header">
-                <span class="clients-badge">Trusted By</span>
-                <h3>Brands & Clients We've Worked With</h3>
+                <span class="clients-badge">Dipercayai Oleh</span>
+                <h3>Jenama & Pelanggan Yang Pernah Berurusan Dengan Kami</h3>
             </div>
         </div>
         <div class="clients-marquee">
@@ -696,13 +810,13 @@
     <!-- Client Showcase Section -->
     <section class="showcase-section" id="showcase">
         <div class="container">
-            <div class="section-header">
-                <h2>Our Transformations</h2>
-                <p>See the incredible before & after results from our satisfied clients</p>
+            <div class="section-header fade-up">
+                <h2>Transformasi Kami</h2>
+                <p>Lihat hasil sebelum & selepas yang luar biasa dari pelanggan kami yang berpuas hati</p>
             </div>
             <div class="showcase-grid">
                 <!-- Comparison 1 -->
-                <div class="comparison-card">
+                <div class="comparison-card fade-up stagger-1">
                     <div class="comparison-container" data-compare>
                         <div class="comparison-before">
                             <img src="assets\img\case\1a.jpg" alt="Before lawn care">
@@ -711,24 +825,24 @@
                             <img src="assets\img\case\1b.jpg" alt="After lawn care">
                         </div>
                         <div class="comparison-labels">
-                            <span class="comparison-label before">Before</span>
-                            <span class="comparison-label after">After</span>
+                            <span class="comparison-label before">Sebelum</span>
+                            <span class="comparison-label after">Selepas</span>
                         </div>
                         <div class="comparison-slider">
                             <div class="comparison-handle">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
                                     <path d="M18 8l4 4-4 4M6 8l-4 4 4 4"/>
                                 </svg>
                             </div>
                         </div>
                     </div>
                     <div class="comparison-info">
-                        <span class="comparison-tag">Lawn Recovery</span>
-                        <h4>Complete Lawn Restoration</h4>
+                        <span class="comparison-tag">Pemulihan Laman</span>
+                        <p>Dari kering, ke hijau</p>
                     </div>
                 </div>
                 <!-- Comparison 2 -->
-                <div class="comparison-card">
+                <div class="comparison-card fade-up stagger-2">
                     <div class="comparison-container" data-compare>
                         <div class="comparison-before">
                             <img src="https://images.unsplash.com/photo-1767188871210-36af4e850458?w=900&auto=format&fit=crop&q=80" alt="Before lawn care">
@@ -737,24 +851,24 @@
                             <img src="https://images.unsplash.com/photo-1767188870805-58724953a71a?w=900&auto=format&fit=crop&q=80" alt="After lawn care">
                         </div>
                         <div class="comparison-labels">
-                            <span class="comparison-label before">Before</span>
-                            <span class="comparison-label after">After</span>
+                            <span class="comparison-label before">Sebelum</span>
+                            <span class="comparison-label after">Selepas</span>
                         </div>
                         <div class="comparison-slider">
                             <div class="comparison-handle">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
                                     <path d="M18 8l4 4-4 4M6 8l-4 4 4 4"/>
                                 </svg>
                             </div>
                         </div>
                     </div>
                     <div class="comparison-info">
-                        <span class="comparison-tag">Grass Installation</span>
-                        <h4>Pearl Grass Installation</h4>
+                        <span class="comparison-tag">Pemasangan Rumput</span>
+                        <p>Dari tompok, ke belang</p>
                     </div>
                 </div>
                 <!-- Comparison 3 -->
-                <div class="comparison-card">
+                <div class="comparison-card fade-up stagger-3">
                     <div class="comparison-container" data-compare>
                         <div class="comparison-before">
                             <img src="assets\img\case\silapbefore.jpg" alt="Before lawn care">
@@ -763,24 +877,24 @@
                             <img src="assets\img\case\silaprepaired.jpg" alt="After lawn care">
                         </div>
                         <div class="comparison-labels">
-                            <span class="comparison-label before">Before</span>
-                            <span class="comparison-label after">After</span>
+                            <span class="comparison-label before">Sebelum</span>
+                            <span class="comparison-label after">Selepas</span>
                         </div>
                         <div class="comparison-slider">
                             <div class="comparison-handle">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
                                     <path d="M18 8l4 4-4 4M6 8l-4 4 4 4"/>
                                 </svg>
                             </div>
                         </div>
                     </div>
                     <div class="comparison-info">
-                        <span class="comparison-tag">Lawn Recovery</span>
-                        <h4>Complete Lawn Restoration</h4>
+                        <span class="comparison-tag">Pemulihan Laman</span>
+                        <p>Akibat cuba salah racun</p>
                     </div>
                 </div>
                 <!-- Comparison 4 -->
-                <div class="comparison-card">
+                <div class="comparison-card fade-up stagger-4">
                     <div class="comparison-container" data-compare>
                         <div class="comparison-before">
                             <img src="assets\img\case\case1a.jpg" alt="Before lawn care">
@@ -789,12 +903,12 @@
                             <img src="assets\img\case\case1b.jpg" alt="After lawn care">
                         </div>
                         <div class="comparison-labels">
-                            <span class="comparison-label before">Before</span>
-                            <span class="comparison-label after">After</span>
+                            <span class="comparison-label before">Sebelum</span>
+                            <span class="comparison-label after">Selepas</span>
                         </div>
                         <div class="comparison-slider">
                             <div class="comparison-handle">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
                                     <path d="M18 8l4 4-4 4M6 8l-4 4 4 4"/>
                                 </svg>
                             </div>
@@ -802,22 +916,22 @@
                     </div>
                     <div class="comparison-info">
                         <span class="comparison-tag">Dethatching</span>
-                        <h4>Thatch Removal Service</h4>
+                        <p>Rumpai arwah, rumput hidup</p>
                     </div>
                 </div>
             </div>
-            <div class="showcase-cta">
-                <a href="gallery.html" class="btn-outline">View More</a>
+            <div class="showcase-cta fade-up">
+                <a href="gallery.html" class="btn-outline">Lagi Di Galeri</a>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
     <section class="cta-section" id="contact">
-        <div class="container">
-            <h2>Ready to Transform Your Lawn?</h2>
-            <p>Get in touch today for a free consultation and quote</p>
-            <a href="#book" class="header-cta" style="font-size: 1.125rem; padding: 1rem 3rem;">Get Started</a>
+        <div class="container fade-up">
+            <h2>Bersedia Untuk Mengubah Laman Anda?</h2>
+            <p>Hubungi kami hari ini untuk konsultasi dan sebut harga percuma</p>
+            <a href="#book" class="header-cta" style="font-size: 1.125rem; padding: 1rem 3rem;">Mula Sekarang</a>
         </div>
     </section>
 
@@ -827,26 +941,26 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h4>TheLawn</h4>
-                    <p>Malaysia's professional lawn care services for residential and commercial properties.</p>
+                    <p>Perkhidmatan penjagaan rumput profesional Malaysia untuk kediaman dan komersial.</p>
                 </div>
                 <div class="footer-section">
-                    <h4>Quick Links</h4>
+                    <h4>Pautan Pantas</h4>
                     <ul>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#benefits">Why Choose Us</a></li>
-                        <li><a href="areacalc.html">Area Calculator</a></li>
+                        <li><a href="#services">Perkhidmatan</a></li>
+                        <li><a href="#benefits">Kenapa Kami</a></li>
+                        <li><a href="areacalc.html">Kalkulator Laman</a></li>
                         <li><a href="3bulan.html">Set 3 Bulan</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Contact</h4>
+                    <h4>Hubungi Kami</h4>
                     <ul>
                         <li><a href="https://wa.me/601121888274?text=Hello, TheLawn!">WhatsApp</a></li>
-                        <li><a href="mailto:admin@thelawn.com.my">Email Us</a></li>
+                        <li><a href="mailto:admin@thelawn.com.my">Emel Kami</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Follow Us</h4>
+                    <h4>Ikuti Kami</h4>
                     <div class="social-links">
                         <a href="https://www.facebook.com/thelawnmalaysia" target="_blank" aria-label="Facebook">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
@@ -858,7 +972,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; <span id="currentYear"></span> TheLawn. All rights reserved.</p>
+                <p>&copy; <span id="currentYear"></span> TheLawn. Hak Cipta Terpelihara.</p>
             </div>
         </div>
     </footer>
@@ -871,6 +985,12 @@
     </button>
     <script src="assets/js/script.js"></script>
     <script>
+        // Dynamic Year
+        const yearSpan = document.getElementById('currentYear');
+        if(yearSpan) {
+            yearSpan.textContent = new Date().getFullYear();
+        }
+
         // Back to top button
         const backToTop = document.getElementById('backToTop');
         window.addEventListener('scroll', () => {
