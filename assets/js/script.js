@@ -559,3 +559,28 @@ document.querySelectorAll('[data-compare]').forEach(container => {
         isDragging = false;
     });
 });
+
+// =========================================
+// SCROLL ANIMATIONS (IntersectionObserver)
+// =========================================
+document.addEventListener('DOMContentLoaded', () => {
+    const animatedElements = document.querySelectorAll('.fade-up, .fade-in, .slide-in-left, .slide-in-right');
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15 // Trigger when 15% of the element is visible
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target); // Only animate once
+            }
+        });
+    }, observerOptions);
+
+    animatedElements.forEach(el => observer.observe(el));
+});
+
