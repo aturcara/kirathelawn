@@ -8,227 +8,195 @@ if (currentYearEl) {
     currentYearEl.textContent = new Date().getFullYear();
 }
 
-// Mobile Menu Toggle
-const menuToggle = document.getElementById('menuToggle');
-const mobileNav = document.getElementById('mobileNav');
-const mobileOverlay = document.getElementById('mobileOverlay');
+// Mobile Menu Toggle (Fixed)
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const navLinks = document.querySelector('.nav-links');
 
-function openMenu() {
-    if (mobileNav) mobileNav.classList.add('active');
-    if (mobileOverlay) mobileOverlay.classList.add('active');
-    if (menuToggle) menuToggle.classList.add('active');
-    document.body.classList.add('menu-open');
-}
+if (mobileMenuBtn && navLinks) {
+    mobileMenuBtn.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
 
-function closeMenu() {
-    if (mobileNav) mobileNav.classList.remove('active');
-    if (mobileOverlay) mobileOverlay.classList.remove('active');
-    if (menuToggle) menuToggle.classList.remove('active');
-    document.body.classList.remove('menu-open');
-}
+        // Toggle hamburger icon
+        this.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+    });
 
-if (menuToggle) {
-    menuToggle.addEventListener('click', () => {
-        mobileNav.classList.contains('active') ? closeMenu() : openMenu();
+    // Close menu when clicking a link
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            document.body.classList.remove('menu-open');
+            mobileMenuBtn.textContent = '☰';
+        });
+    });
+
+    // Close menu on resize to desktop
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) {
+            navLinks.classList.remove('active');
+            document.body.classList.remove('menu-open');
+            mobileMenuBtn.textContent = '☰';
+        }
     });
 }
-
-if (mobileOverlay) {
-    mobileOverlay.addEventListener('click', closeMenu);
-}
-
-document.querySelectorAll('.mobile-nav a').forEach(link => {
-    link.addEventListener('click', closeMenu);
-});
 
 // =========================================
 // SAVE INPUT DATA TO LOCALSTORAGE
 // =========================================
-
 const calcFields = [
-    'pesticideAmount',
-    'pesticideUnit',
-    'waterAmount',
-    'waterUnit',
-    'labelArea',
-    'labelAreaUnit',
-    'yourArea',
-    'sandThickness',
-    'sandArea'
+    'pesticideAmount', 'pesticideUnit',
+    'waterAmount', 'waterUnit',
+    'labelArea', 'labelAreaUnit',
+    'yourArea', 'sandThickness', 'sandArea'
 ];
 
-// Restore saved values on page load
 window.addEventListener('DOMContentLoaded', () => {
     calcFields.forEach(id => {
         const el = document.getElementById(id);
-        if (!el) return;
-
-        const saved = localStorage.getItem('thelawn_' + id);
-        if (saved !== null) {
-            el.value = saved;
+        if (el) {
+            const saved = localStorage.getItem('thelawn_' + id);
+            if (saved !== null) {
+                el.value = saved;
+                // Trigger slider update if it's the slider
+                if (id === 'sandThickness') {
+                    const display = document.getElementById('thicknessValue');
+                    if (display) display.textContent = saved;
+                }
+            }
         }
     });
 });
 
-// Save value on change / input
 calcFields.forEach(id => {
     const el = document.getElementById(id);
-    if (!el) return;
-
-    el.addEventListener('input', () => {
-        localStorage.setItem('thelawn_' + id, el.value);
-    });
-
-    el.addEventListener('change', () => {
-        localStorage.setItem('thelawn_' + id, el.value);
-    });
+    if (el) {
+        el.addEventListener('input', () => localStorage.setItem('thelawn_' + id, el.value));
+        el.addEventListener('change', () => localStorage.setItem('thelawn_' + id, el.value));
+    }
 });
 
 // =========================================
-// CTA LINK HANDLER
+// CALCULATOR TABS TOGGLE
 // =========================================
-const ctaLink = document.getElementById('ctaLink');
-if (ctaLink) {
-    ctaLink.addEventListener('click', (e) => {
-        // Data already saved to localStorage by app.js updateUI()
-        // Just let the link navigate normally
+const calcTabs = document.querySelectorAll('.calc-toggle-btn');
+const calcContents = document.querySelectorAll('.calc-tab-content');
+
+if (calcTabs.length > 0) {
+    calcTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            calcTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            
+            calcContents.forEach(content => {
+                content.style.display = 'none';
+                content.classList.remove('active');
+            });
+            
+            const targetId = tab.getAttribute('data-target');
+            const targetContent = document.getElementById(targetId);
+            if (targetContent) {
+                targetContent.style.display = 'block';
+                setTimeout(() => targetContent.classList.add('active'), 10);
+            }
+        });
     });
 }
 
 // =========================================
-// COLLAPSIBLE "WHY IT MATTERS" SECTIONS
-// =========================================
-function toggleWhy(sectionId) {
-    // Get all "Why it matters" sections and buttons
-    const allContents = document.querySelectorAll('.why-matters-content');
-    const allButtons = document.querySelectorAll('.why-matters-toggle');
-
-    // Toggle all sections and buttons simultaneously
-    allContents.forEach(content => {
-        content.classList.toggle('active');
-    });
-
-    allButtons.forEach(button => {
-        button.classList.toggle('active');
-    });
-}
-
-// Make toggleWhy available globally
-window.toggleWhy = toggleWhy;
-
-// =========================================
-// BACK TO TOP BUTTON
-// =========================================
-const backToTopBtn = document.getElementById('backToTop');
-
-if (backToTopBtn) {
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-            backToTopBtn.classList.add('show');
-        } else {
-            backToTopBtn.classList.remove('show');
-        }
-    });
-
-    backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-}
-
-// =========================================
-// PESTICIDE/FOLIAR CALCULATOR
+// PESTICIDE CALCULATOR
 // =========================================
 const calculatePesticideBtn = document.getElementById('calculatePesticide');
 if (calculatePesticideBtn) {
     calculatePesticideBtn.addEventListener('click', () => {
-        const pesticideAmount = parseFloat(document.getElementById('pesticideAmount').value) || 0;
-        const pesticideUnit = document.getElementById('pesticideUnit').value;
-        const waterAmount = parseFloat(document.getElementById('waterAmount').value) || 0;
-        const waterUnit = document.getElementById('waterUnit').value;
-        const labelArea = parseFloat(document.getElementById('labelArea').value) || 0;
-        const labelAreaUnit = document.getElementById('labelAreaUnit').value;
-        const yourArea = parseFloat(document.getElementById('yourArea').value) || 0;
+        const pAmount = parseFloat(document.getElementById('pesticideAmount').value) || 0;
+        const pUnit = document.getElementById('pesticideUnit').value;
+        const wAmount = parseFloat(document.getElementById('waterAmount').value) || 0;
+        const wUnit = document.getElementById('waterUnit').value;
+        const lArea = parseFloat(document.getElementById('labelArea').value) || 0;
+        const lAreaUnit = document.getElementById('labelAreaUnit').value;
+        const yArea = parseFloat(document.getElementById('yourArea').value) || 0;
 
-        if (!pesticideAmount || !waterAmount || !labelArea || !yourArea) {
-            alert('Sila isi semua ruangan');
+        if (!pAmount || !wAmount || !lArea || !yArea) {
+            alert('Please fill in all fields');
             return;
         }
 
-        // Convert labelArea to sqft
-        let labelAreaSqft = labelArea;
-        if (labelAreaUnit === 'm2') {
-            labelAreaSqft = labelArea * 10.764;
-        } else if (labelAreaUnit === 'hectare') {
-            labelAreaSqft = labelArea * 107639;
-        }
+        let lAreaSqft = lArea;
+        if (lAreaUnit === 'm2') lAreaSqft = lArea * 10.764;
+        else if (lAreaUnit === 'hectare') lAreaSqft = lArea * 107639;
 
-        // Calculate ratio
-        const ratio = yourArea / labelAreaSqft;
+        const ratio = yArea / lAreaSqft;
 
-        // Calculate pesticide needed (convert to ml for display)
-        let pesticideNeeded = pesticideAmount * ratio;
-        let pesticideDisplay = '';
-        if (pesticideUnit === 'liter') {
-            pesticideNeeded = pesticideNeeded * 1000; // Convert to ml
-        }
-        if (pesticideNeeded >= 1000) {
-            pesticideDisplay = (pesticideNeeded / 1000).toFixed(2) + ' liter';
-        } else {
-            pesticideDisplay = pesticideNeeded.toFixed(1) + ' ml';
-        }
+        let pNeeded = pAmount * ratio;
+        let pDisplay = '';
+        if (pUnit === 'liter') pNeeded *= 1000;
+        
+        if (pNeeded >= 1000) pDisplay = (pNeeded / 1000).toFixed(2) + ' liter';
+        else pDisplay = pNeeded.toFixed(1) + ' ml';
 
-        // Calculate water needed (convert to liters for display)
-        let waterNeeded = waterAmount * ratio;
-        let waterDisplay = '';
-        if (waterUnit === 'ml') {
-            waterNeeded = waterNeeded / 1000; // Convert to liters
-        }
-        if (waterNeeded < 1) {
-            waterDisplay = (waterNeeded * 1000).toFixed(0) + ' ml';
-        } else {
-            waterDisplay = waterNeeded.toFixed(2) + ' liter';
-        }
+        let wNeeded = wAmount * ratio;
+        let wDisplay = '';
+        if (wUnit === 'ml') wNeeded /= 1000;
 
-        document.getElementById('pesticideNeeded').textContent = pesticideDisplay;
-        document.getElementById('waterNeeded').textContent = waterDisplay;
+        if (wNeeded < 1) wDisplay = (wNeeded * 1000).toFixed(0) + ' ml';
+        else wDisplay = wNeeded.toFixed(2) + ' liter';
+
+        document.getElementById('pesticideNeeded').textContent = pDisplay;
+        document.getElementById('waterNeeded').textContent = wDisplay;
         document.getElementById('pesticideResult').style.display = 'block';
     });
 }
 
 // =========================================
-// TOPDRESS SAND CALCULATOR
+// SAND CALCULATOR (Slider + Volume)
 // =========================================
+const sandSlider = document.getElementById('sandThickness');
+const thicknessValue = document.getElementById('thicknessValue');
+
+if (sandSlider && thicknessValue) {
+    sandSlider.addEventListener('input', function() {
+        thicknessValue.textContent = this.value;
+    });
+}
+
 const calculateSandBtn = document.getElementById('calculateSand');
 if (calculateSandBtn) {
     calculateSandBtn.addEventListener('click', () => {
-        const sandThickness = parseFloat(document.getElementById('sandThickness').value) || 0;
-        const sandArea = parseFloat(document.getElementById('sandArea').value) || 0;
+        const thickness = parseFloat(document.getElementById('sandThickness').value) || 0;
+        const area = parseFloat(document.getElementById('sandArea').value) || 0;
 
-        if (!sandThickness || !sandArea) {
-            alert('Sila isi semua ruangan');
+        if (!thickness || !area) {
+            alert('Please fill in all fields');
             return;
         }
 
-        // Convert sqft to m2
-        const areaM2 = sandArea * 0.0929;
-
-        // Convert mm to m
-        const thicknessM = sandThickness / 1000;
-
-        // Calculate volume in m3
+        const areaM2 = area * 0.0929;
+        const thicknessM = thickness / 1000;
         const volumeM3 = areaM2 * thicknessM;
-
-        // Convert to tons (assuming sand density of 1.6 tons per m3)
         const tons = volumeM3 * 1.6;
 
         let sandDisplay = '';
-        if (tons < 1) {
-            sandDisplay = (tons * 1000).toFixed(0) + ' kg';
-        } else {
-            sandDisplay = tons.toFixed(2) + ' tan';
-        }
+        if (tons < 1) sandDisplay = (tons * 1000).toFixed(0) + ' kg';
+        else sandDisplay = tons.toFixed(2) + ' tonne';
 
         document.getElementById('sandVolume').textContent = sandDisplay;
+        
+        const volEl = document.getElementById('sandVolumeM3');
+        if (volEl) volEl.textContent = volumeM3.toFixed(2);
+
         document.getElementById('sandResult').style.display = 'block';
+    });
+}
+
+// =========================================
+// BACK TO TOP
+// =========================================
+const backToTopBtn = document.getElementById('backToTop');
+if (backToTopBtn) {
+    window.addEventListener('scroll', () => {
+        backToTopBtn.classList.toggle('show', window.pageYOffset > 300);
+    });
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 }

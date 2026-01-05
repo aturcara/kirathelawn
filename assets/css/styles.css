@@ -4096,7 +4096,7 @@ footer {
 
 /* Calculator Section for Sales Page */
 .calculator-section {
-    padding: 4rem 0;
+    padding: 4rem 1rem;
     background: linear-gradient(135deg, var(--teal-light) 0%, #E8F5F2 100%);
 }
 
