@@ -9,36 +9,37 @@ if (currentYearEl) {
 }
 
 // Mobile Menu Toggle
-const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-const navLinks = document.querySelector('.nav-links');
+const menuToggle = document.getElementById('menuToggle');
+const mobileNav = document.getElementById('mobileNav');
+const mobileOverlay = document.getElementById('mobileOverlay');
 
-if (mobileMenuBtn && navLinks) {
-    mobileMenuBtn.addEventListener('click', function() {
-        navLinks.classList.toggle('active');
-        document.body.classList.toggle('menu-open');
+function openMenu() {
+    if (mobileNav) mobileNav.classList.add('active');
+    if (mobileOverlay) mobileOverlay.classList.add('active');
+    if (menuToggle) menuToggle.classList.add('active');
+    document.body.classList.add('menu-open');
+}
 
-        // Toggle hamburger icon
-        this.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
-    });
+function closeMenu() {
+    if (mobileNav) mobileNav.classList.remove('active');
+    if (mobileOverlay) mobileOverlay.classList.remove('active');
+    if (menuToggle) menuToggle.classList.remove('active');
+    document.body.classList.remove('menu-open');
+}
 
-    // Close menu when clicking a link
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            document.body.classList.remove('menu-open');
-            mobileMenuBtn.textContent = '☰';
-        });
-    });
-
-    // Close menu on resize to desktop
-    window.addEventListener('resize', () => {
-        if (window.innerWidth >= 768) {
-            navLinks.classList.remove('active');
-            document.body.classList.remove('menu-open');
-            mobileMenuBtn.textContent = '☰';
-        }
+if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+        mobileNav.classList.contains('active') ? closeMenu() : openMenu();
     });
 }
+
+if (mobileOverlay) {
+    mobileOverlay.addEventListener('click', closeMenu);
+}
+
+document.querySelectorAll('.mobile-nav a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+});
 
 // =========================================
 // SAVE INPUT DATA TO LOCALSTORAGE
