@@ -539,12 +539,13 @@ body.menu-open {
 
 #serviceCheckboxes {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 0.5rem;
 }
 
 #serviceCheckboxes .service-card {
     margin-bottom: 0 !important;
+    width: 100%;
 }
 
 #serviceCheckboxes .service-card:hover {
@@ -562,6 +563,9 @@ body.menu-open {
         display: block;
     }
     .service-type-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    #serviceCheckboxes {
         grid-template-columns: repeat(2, 1fr);
     }
 }
