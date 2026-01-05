@@ -231,114 +231,207 @@
             </div>
         </div>
 
-        <!-- Section Divider - Racun/Foliar -->
+        <!-- Section Divider - Product Calculators -->
         <div class="section-divider">
             <div class="divider-content">
                 <div class="divider-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                        <path d="M9 7h6m0 0v-3m-3 3h-3"></path>
+                        <path d="M9 17h6v-3h-6v3zm0-10h6v3h-6v-3z"></path>
+                        <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"></path>
                     </svg>
                 </div>
-                <h2 class="divider-title">Pengiraan Racun & Foliar Spray</h2>
-                <p class="divider-subtitle">Keliru dengan arahan label produk? Label kata "10ml per 400sqft dengan 1 liter air" - tapi laman anda 1,500sqft. Berapa banyak racun dan air yang diperlukan? Gunakan kalkulator ini untuk dapatkan pengiraan yang tepat tanpa pembaziran.</p>
+                <h2 class="divider-title">Product Calculators</h2>
+                <p class="divider-subtitle">Calculate exact amounts for pesticide mixing or sand topdressing based on your lawn size.</p>
             </div>
         </div>
 
-        <!-- Pesticide/Foliar Calculator -->
-        <div class="calculator-section">
-            <div class="form-group">
-                <label class="form-label">Racun/Foliar (mengikut label botol):</label>
-                <div class="input-group">
-                    <input type="number" id="pesticideAmount" class="form-input" placeholder="Masukkan nilai" step="0.1">
-                    <select id="pesticideUnit" class="form-select">
-                        <option value="ml">ml</option>
-                        <option value="liter">liter</option>
-                    </select>
+        <!-- Combined Calculators Section -->
+        <div class="calculators-wrapper">
+            <!-- Toggle Navigation -->
+            <div class="calc-toggle-container">
+                <div class="calc-toggle-nav">
+                    <button class="calc-toggle-btn active" data-target="tab-pesticide">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                        </svg>
+                        Pesticide / Foliar
+                    </button>
+                    <button class="calc-toggle-btn" data-target="tab-sand">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+                        </svg>
+                        Sand Topdressing
+                    </button>
                 </div>
             </div>
 
-            <div class="form-group">
-                <label class="form-label">Air:</label>
-                <div class="input-group">
-                    <input type="number" id="waterAmount" class="form-input" placeholder="Masukkan nilai" step="0.1">
-                    <select id="waterUnit" class="form-select">
-                        <option value="liter">liter</option>
-                        <option value="ml">ml</option>
-                    </select>
+            <!-- Pesticide Tab -->
+            <div class="calc-tab-content active" id="tab-pesticide">
+                <div class="calculator-section">
+                    <div class="calc-card">
+                        <div class="calc-header">
+                            <h3>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                                </svg>
+                                Pesticide Dosage Calculator
+                            </h3>
+                        </div>
+                        <div class="calc-body">
+                            <div class="calc-grid">
+                                <!-- Left: Label Info -->
+                                <div class="calc-sub-section">
+                                    <h4>Product Label Instructions</h4>
+                                    <div class="modern-input-group">
+                                        <label>Application Rate (Dose)</label>
+                                        <div class="input-wrapper">
+                                            <input type="number" id="pesticideAmount" placeholder="e.g. 10" step="0.1">
+                                            <select id="pesticideUnit" class="input-select">
+                                                <option value="ml">ml</option>
+                                                <option value="liter">liter</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="modern-input-group">
+                                        <label>Water Volume</label>
+                                        <div class="input-wrapper">
+                                            <input type="number" id="waterAmount" placeholder="e.g. 10" step="0.1">
+                                            <select id="waterUnit" class="input-select">
+                                                <option value="liter">liter</option>
+                                                <option value="ml">ml</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="modern-input-group">
+                                        <label>For Area Size</label>
+                                        <div class="input-wrapper">
+                                            <input type="number" id="labelArea" placeholder="e.g. 1000" step="0.1">
+                                            <select id="labelAreaUnit" class="input-select">
+                                                <option value="ft2">ft²</option>
+                                                <option value="m2">m²</option>
+                                                <option value="hectare">hectar</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Right: Your Lawn -->
+                                <div class="calc-sub-section">
+                                    <h4>Your Lawn Application</h4>
+                                    <div class="modern-input-group">
+                                        <label>Your Lawn Area</label>
+                                        <div class="input-wrapper">
+                                            <input type="number" id="yourArea" placeholder="0" step="0.1">
+                                            <div class="input-suffix">sqft</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="calc-actions">
+                                        <button id="calculatePesticide" class="btn-calc">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                            </svg>
+                                            Calculate Mixture
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Result -->
+                            <div id="pesticideResult" class="result-card-modern">
+                                <div class="result-header">
+                                    <h4>Recommended Mixture</h4>
+                                </div>
+                                <div class="result-grid">
+                                    <div class="result-box highlight">
+                                        <div class="result-value" id="pesticideNeeded">-</div>
+                                        <div class="result-unit">Product Needed</div>
+                                    </div>
+                                    <div class="result-box">
+                                        <div class="result-value" id="waterNeeded">-</div>
+                                        <div class="result-unit">Water Volume</div>
+                                    </div>
+                                </div>
+                                <p class="result-note">Always read the product label safety instructions before mixing.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="form-group">
-                <label class="form-label">Keluasan:</label>
-                <div class="input-group">
-                    <input type="number" id="labelArea" class="form-input" placeholder="Masukkan nilai" step="0.1">
-                    <select id="labelAreaUnit" class="form-select">
-                        <option value="ft2">ft²</option>
-                        <option value="m2">m²</option>
-                        <option value="hectare">hectar</option>
-                    </select>
-                </div>
-            </div>
+            <!-- Sand Tab -->
+            <div class="calc-tab-content" id="tab-sand" style="display: none;">
+                <div class="calculator-section">
+                    <div class="calc-card">
+                        <div class="calc-header amber">
+                            <h3>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+                                </svg>
+                                Sand Topdressing Calculator
+                            </h3>
+                        </div>
+                        <div class="calc-body">
+                            <div class="calc-grid">
+                                <!-- Left: Inputs -->
+                                <div class="calc-sub-section">
+                                    <h4>Measurement Details</h4>
+                                    
+                                    <div class="modern-input-group">
+                                        <label>Target Sand Thickness</label>
+                                        <div class="range-container">
+                                            <div class="range-display"><span id="thicknessValue">5</span> <span>mm</span></div>
+                                            <input type="range" id="sandThickness" class="range-slider" min="1" max="20" step="1" value="5">
+                                            <div class="range-values">
+                                                <span>1mm (Light)</span>
+                                                <span>10mm (Heavy)</span>
+                                                <span>20mm</span>
+                                            </div>
+                                        </div>
+                                    </div>
 
-            <div class="form-group">
-                <label class="form-label">Keluasan Laman Anda:</label>
-                <div class="input-with-unit">
-                    <input type="number" id="yourArea" class="form-input" placeholder="Masukkan nilai" step="0.1">
-                    <span class="input-unit">sqft</span>
-                </div>
-            </div>
+                                    <div class="modern-input-group">
+                                        <label>Lawn Area</label>
+                                        <div class="input-wrapper">
+                                            <input type="number" id="sandArea" placeholder="0" step="0.1">
+                                            <div class="input-suffix">sqft</div>
+                                        </div>
+                                    </div>
+                                </div>
 
-            <button id="calculatePesticide" class="btn btn-primary" style="width: 100%; font-size: 1.125rem; padding: 0.875rem;">Kira</button>
+                                <!-- Right: Action & Result -->
+                                <div class="calc-sub-section">
+                                    <div class="calc-actions" style="margin-top: 0; justify-content: center; height: 100%;">
+                                        <button id="calculateSand" class="btn-calc amber">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M9 11l3 3L22 4"></path>
+                                                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                                            </svg>
+                                            Calculate Sand
+                                        </button>
 
-            <div id="pesticideResult" class="result-display" style="display: none;">
-                <div class="result-item">
-                    <div class="result-label">Jumlah Racun/Foliar yang diperlukan:</div>
-                    <div class="result-value" id="pesticideNeeded">-</div>
-                </div>
-                <div class="result-item">
-                    <div class="result-label">Jumlah Air yang diperlukan:</div>
-                    <div class="result-value" id="waterNeeded">-</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Section Divider - Topdress -->
-        <div class="section-divider">
-            <div class="divider-content">
-                <div class="divider-icon amber">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
-                    </svg>
-                </div>
-                <h2 class="divider-title">Pengiraan Topdress Pasir</h2>
-                <p class="divider-subtitle">Nak topdress rumput tapi tak pasti berapa banyak pasir diperlukan? Tebal 3mm atau 5mm? 1,000sqft perlukan berapa tan pasir? Kalkulator ini bantu anda kira dengan tepat supaya tak order lebih atau kurang.</p>
-            </div>
-        </div>
-
-        <!-- Topdress Sand Calculator -->
-        <div class="calculator-section">
-            <div class="form-group">
-                <label class="form-label">Tebal Pasir Topdress:</label>
-                <div class="input-with-unit">
-                    <input type="number" id="sandThickness" class="form-input" placeholder="Masukkan nilai" step="0.1">
-                    <span class="input-unit">mm</span>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="form-label">Keluasan Laman:</label>
-                <div class="input-with-unit">
-                    <input type="number" id="sandArea" class="form-input" placeholder="Masukkan nilai" step="0.1">
-                    <span class="input-unit">sqft</span>
-                </div>
-            </div>
-
-            <button id="calculateSand" class="btn btn-primary" style="width: 100%; background: linear-gradient(135deg, var(--yellow-primary) 0%, var(--yellow-accent) 100%); color: var(--teal-primary); font-size: 1.125rem; padding: 0.875rem;">Kira</button>
-
-            <div id="sandResult" class="result-display" style="display: none;">
-                <div class="result-item">
-                    <div class="result-label">Jumlah Pasir yang diperlukan:</div>
-                    <div class="result-value" id="sandVolume">-</div>
+                                        <div id="sandResult" class="result-card-modern amber" style="width: 100%; margin-top: 1.5rem;">
+                                            <div class="result-header">
+                                                <h4>Estimated Requirement</h4>
+                                            </div>
+                                            <div class="result-grid">
+                                                <div class="result-box highlight">
+                                                    <div class="result-value" id="sandVolume">-</div>
+                                                    <div class="result-unit">Weight (Tonnes/KG)</div>
+                                                </div>
+                                                <div class="result-box">
+                                                    <div class="result-value" id="sandVolumeM3">-</div>
+                                                    <div class="result-unit">Volume (m³)</div>
+                                                </div>
+                                            </div>
+                                            <p class="result-note">Based on average river sand density (1.6 tonne/m³).</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -390,8 +483,7 @@
     <!-- WhatsApp Button -->
     <a href="https://wa.me/601121888274?text=Hello, TheLawn!" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-        </svg>
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     </a>
 
     <!-- Back to Top Button -->
