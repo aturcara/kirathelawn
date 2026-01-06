@@ -38,7 +38,7 @@ const locationData = {
     'WP Kuala Lumpur': ['Kuala Lumpur', 'Ampang', 'Bangsar', 'Brickfields', 'Bukit Bintang', 'Cheras', 'Damansara', 'Kepong', 'Mont Kiara', 'Sentul', 'Setapak', 'Titiwangsa', 'Wangsa Maju'],
     'WP Putrajaya': ['Putrajaya'],
     'WP Labuan': ['Labuan'],
-    'Selangor': ['Petaling Jaya', 'Shah Alam', 'Subang Jaya', 'Klang', 'Puchong', 'Kajang', 'Cyberjaya', 'Bangi', 'Serdang', 'Rawang', 'Sungai Buloh', 'Semenyih', 'Sepang', 'Kuala Selangor', 'Kuala Kubu Bharu', 'Banting', 'Jenjarom', 'Telok Panglima Garang', 'Dengkil', 'Selayang', 'Gombak', 'Hulu Langat', 'Hulu Selangor', 'Sabak Bernam'],
+    'Selangor': ['Petaling Jaya', 'Lembah Klang', 'Subang Jaya', 'Klang', 'Puchong', 'Kajang', 'Cyberjaya', 'Bangi', 'Serdang', 'Rawang', 'Sungai Buloh', 'Semenyih', 'Sepang', 'Kuala Selangor', 'Kuala Kubu Bharu', 'Banting', 'Jenjarom', 'Telok Panglima Garang', 'Dengkil', 'Selayang', 'Gombak', 'Hulu Langat', 'Hulu Selangor', 'Sabak Bernam'],
     'Johor': ['Johor Bahru', 'Iskandar Puteri', 'Skudai', 'Pasir Gudang', 'Kulai', 'Kluang', 'Batu Pahat', 'Muar', 'Pontian', 'Segamat', 'Kota Tinggi', 'Mersing', 'Tangkak', 'Yong Peng', 'Ayer Hitam', 'Simpang Renggam', 'Labis', 'Parit Raja', 'Senai', 'Ulu Tiram'],
     'Melaka': ['Melaka City', 'Alor Gajah', 'Jasin', 'Masjid Tanah', 'Bemban', 'Durian Tunggal'],
     'Negeri Sembilan': ['Seremban', 'Port Dickson', 'Nilai', 'Tampin', 'Rembau', 'Kuala Pilah', 'Jempol', 'Jelebu', 'Bahau', 'Gemas'],
