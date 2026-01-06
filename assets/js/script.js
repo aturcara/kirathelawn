@@ -118,10 +118,10 @@ function populateServiceCheckboxes() {
             { value: 'Saliran Bawah Tanah (Penjagaan)', label: 'Saliran Bawah Tanah (Penjagaan)', icon: '🚰' }
         ]
         : [
-            { value: 'Rumput Kerbau Pemasangan', label: 'Rumput Kerbau', icon: '🐄' },
-            { value: 'Rumput Filipina Pemasangan', label: 'Rumput Filipina', icon: '🇵🇭' },
-            { value: 'Rumput Mutiara Pemasangan', label: 'Rumput Mutiara', icon: '💎' },
-            { value: 'Rumput Jepun Pemasangan', label: 'Rumput Jepun', icon: '🇯🇵' },
+            { value: 'Rumput Kerbau (Pemasangan)', label: 'Rumput Kerbau', icon: '🐄' },
+            { value: 'Rumput Filipina (Pemasangan)', label: 'Rumput Filipina', icon: '🇵🇭' },
+            { value: 'Rumput Mutiara (Pemasangan)', label: 'Rumput Mutiara', icon: '💎' },
+            { value: 'Rumput Jepun (Pemasangan)', label: 'Rumput Jepun', icon: '🇯🇵' },
             { value: 'Sistem Renjis (Pemasangan)', label: 'Sistem Renjis', icon: '💧' },
             { value: 'Saliran Bawah Tanah (Pemasangan)', label: 'Saliran Bawah Tanah', icon: '🚰' }
         ];
@@ -263,7 +263,7 @@ if (bookingForm) {
         const servicesText = selectedServices.map(s => `• ${s}`).join('\n');
 
         // Create well-formatted WhatsApp message with proper styling
-        const message = `*THELAWN - PERMINTAAN TEMPAHAN*
+        const message = `*THELAWN - TEMPAHAN PERKHIDMATAN*
 
 ━━━━━━━━━━━━━━━━━━━━━━
 
@@ -278,9 +278,9 @@ ${servicesText}
 
 ━━━━━━━━━━━━━━━━━━━━━━
 
-Saya ingin menjadualkan perkhidmatan ini secepat mungkin.
+Mohon tarikh untuk menjadualkan perkhidmatan ini.
 
-Menantikan maklum balas daripada pihak anda!`;
+Saya menanti maklum balas daripada pihak TheLawn, terima kasih.`;
 
         const whatsappUrl = `https://wa.me/601121888274?text=${encodeURIComponent(message)}`;
         window.open(whatsappUrl, '_blank');
