@@ -1,14 +1,14 @@
 // Partner Data
 const partners = [
     {
-        name: "MZ Land Landscape",
+        name: "MZ Landskap & Nurseri Benut",
         location: "Masai, Johor",
         state: "Johor",
         logo: "assets/img/partners-logo/johor-masai-mzland.jpeg",
         services: ["Penjagaan Rumput", "Lanskap"]
     },
     {
-        name: "WHR Landscape",
+        name: "WHR JB",
         location: "Johor Bahru, Johor",
         state: "Johor",
         logo: "assets/img/partners-logo/johor-jb-whr.png",
@@ -22,25 +22,39 @@ const partners = [
         services: ["Penjagaan Rumput", "Rawatan Tanah"]
     },
     {
-        name: "Alif Land",
+        name: "Scape Tour",
+        location: "Sungai Petani, Kedah",
+        state: "Kedah",
+        logo: "assets/img/partners-logo/kedah-sungai-petani-scapetour.jpeg",
+        services: ["Lanskap", "Rumput"]
+    },
+    {
+        name: "Alif Landscape",
         location: "Ipoh, Perak",
         state: "Perak",
         logo: "assets/img/partners-logo/perak-ipoh-alifland.jpeg",
         services: ["Lanskap Hardscape", "Rumput"]
     },
     {
-        name: "GLL Landscape",
+        name: "GLL",
         location: "Seri Iskandar, Perak",
         state: "Perak",
         logo: "assets/img/partners-logo/perak-seri-iskandar-gll.jpeg",
         services: ["Potong Rumput", "Baja"]
     },
     {
-        name: "ZBS Garden",
+        name: "ZBS Lawncare Services",
         location: "Seri Iskandar, Perak",
         state: "Perak",
         logo: "assets/img/partners-logo/perak-seri-iskandar-zbs.jpeg",
         services: ["Nursery", "Rumput"]
+    },
+    {
+        name: "Mommy Daddy Garden",
+        location: "Ayer Keroh, Melaka",
+        state: "Melaka",
+        logo: "assets/img/partners-logo/melaka-ayer-keroh-mommy daddy garden.jpeg",
+        services: ["Nursery", "Lanskap"]
     },
     {
         name: "Empayar Lawn",
@@ -50,7 +64,7 @@ const partners = [
         services: ["Pakar Rumput", "Sistem Siraman"]
     },
     {
-        name: "Furqan Landscape",
+        name: "Furqan Services",
         location: "Selangor",
         state: "Selangor",
         logo: "assets/img/partners-logo/selangor-furqan.png",
@@ -118,9 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('show'); // You might need to add CSS for .show if not in styles.css, but index.html used fade-up logic. 
-                // Let's assume the fade-up class logic from index.html is handled by script.js or we need to add it here.
-                // Since we didn't include script.js, we need to handle it.
+                entry.target.classList.add('show'); 
                 entry.target.style.opacity = '1';
                 entry.target.style.transform = 'translateY(0)';
                 observer.unobserve(entry.target);
@@ -227,5 +239,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function filterPartners(stateName) {
         renderPartners(stateName);
+    }
+});
+
+// UI Interaction Logic (Moved from partners.html)
+document.addEventListener('DOMContentLoaded', () => {
+    // Dynamic Year
+    const yearEl = document.getElementById('currentYear');
+    if(yearEl) yearEl.textContent = new Date().getFullYear();
+
+    // Mobile Menu
+    const mobileBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    const body = document.body;
+
+    if(mobileBtn) {
+        mobileBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            body.classList.toggle('menu-open');
+            mobileBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+    }
+
+    // Back to top
+    const backToTop = document.getElementById('backToTop');
+    if(backToTop) {
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
     }
 });

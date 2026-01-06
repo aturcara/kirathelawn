@@ -264,6 +264,12 @@
                         </svg>
                         Topdressing Pasir
                     </button>
+                    <button class="prod-calc-tab-btn calc-toggle-btn" data-target="tab-iron">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                        </svg>
+                        Xtra Iron
+                    </button>
                 </div>
 
                 <!-- Calculator Content -->
@@ -436,6 +442,59 @@
                                         </div>
                                         <p class="prod-calc-note">
                                             Berdasarkan ketumpatan purata pasir sungai (1.6 tan/m³).
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Xtra Iron Tab -->
+                    <div id="tab-iron" class="prod-calc-panel calc-tab-content" style="display: none;">
+                        <div class="prod-calc-grid">
+                            <!-- Inputs -->
+                            <div class="prod-calc-inputs">
+                                <div class="prod-calc-group">
+                                    <h3>
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                                        </svg>
+                                        Kira Xtra Iron
+                                    </h3>
+
+                                    <div class="prod-calc-field">
+                                        <label>Luas Laman Anda</label>
+                                        <div class="prod-calc-input-wrapper">
+                                            <input type="number" id="ironArea" class="prod-calc-input" placeholder="0" step="0.1">
+                                            <div class="prod-calc-suffix">sqft</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Results -->
+                            <div class="prod-calc-results">
+                                <div class="prod-calc-result-box" style="background-color: #e6f0ff; border-color: #b3d1ff;">
+                                    <button id="calculateIron" class="prod-calc-btn" style="background-color: #0066cc; color: white;">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                        </svg>
+                                        Kira Keperluan
+                                    </button>
+
+                                    <div id="ironResult" class="prod-calc-result-card" style="display: none;">
+                                        <div class="prod-calc-res-grid">
+                                            <div class="prod-calc-res-item">
+                                                <div class="prod-calc-res-val" id="ironDosage">-</div>
+                                                <div class="prod-calc-res-label">Dos (ml)</div>
+                                            </div>
+                                            <div class="prod-calc-res-item">
+                                                <div class="prod-calc-res-val" id="ironCost">-</div>
+                                                <div class="prod-calc-res-label">Anggaran Kos (RM)</div>
+                                            </div>
+                                        </div>
+                                        <p class="prod-calc-note">
+                                            Berdasarkan formula RM5 : 20ml : 1000sqft.
                                         </p>
                                     </div>
                                 </div>

@@ -47,7 +47,7 @@ const calcFields = [
     'pesticideAmount', 'pesticideUnit',
     'waterAmount', 'waterUnit',
     'labelArea', 'labelAreaUnit',
-    'yourArea', 'sandThickness', 'sandArea'
+    'yourArea', 'sandThickness', 'sandArea', 'ironArea'
 ];
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -185,6 +185,32 @@ if (calculateSandBtn) {
         if (volEl) volEl.textContent = volumeM3.toFixed(2);
 
         document.getElementById('sandResult').style.display = 'block';
+    });
+}
+
+// =========================================
+// XTRA IRON CALCULATOR
+// =========================================
+const calculateIronBtn = document.getElementById('calculateIron');
+if (calculateIronBtn) {
+    calculateIronBtn.addEventListener('click', () => {
+        const area = parseFloat(document.getElementById('ironArea').value) || 0;
+
+        if (!area) {
+            alert('Sila masukkan luas laman anda');
+            return;
+        }
+
+        // Formula: 20ml per 1000 sqft
+        const dosage = (area / 1000) * 20;
+        
+        // Formula: RM5 per 1000 sqft
+        const cost = (area / 1000) * 5;
+
+        document.getElementById('ironDosage').textContent = dosage.toFixed(1) + ' ml';
+        document.getElementById('ironCost').textContent = 'RM ' + cost.toFixed(2);
+        
+        document.getElementById('ironResult').style.display = 'block';
     });
 }
 
