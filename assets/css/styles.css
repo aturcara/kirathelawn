@@ -3651,6 +3651,24 @@ footer {
     height: 1.25rem;
 }
 
+.sales-hero-skip {
+    margin-top: 1.5rem;
+}
+
+.sales-hero-skip a {
+    color: var(--white);
+    opacity: 0.8;
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: opacity 0.3s;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.sales-hero-skip a:hover {
+    opacity: 1;
+    border-bottom-color: var(--white);
+}
+
 @media (min-width: 768px) {
     .sales-hero {
         padding: 8rem 0 5rem;

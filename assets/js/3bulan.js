@@ -87,17 +87,17 @@ const products = {
     },
     essentialPlus: {
         name: 'Foliar Essential Plus',
-        price: 45,
-        bottleSize: 250, // ml
-        usageRate: 90, // 90ml per 1000sqft
-        coveragePerBottle: 1000 * (250 / 90) // sqft
+        price: 25,
+        bottleSize: 88, // ml
+        usageRate: 88, // 88ml per 1000sqft
+        coveragePerBottle: 1000 // sqft
     },
     bioNutriens: {
         name: 'Foliar Bio Nutriens',
-        price: 36,
-        packSize: 80, // gram
-        usageRate: 10, // 10g per 1000sqft
-        coveragePerPack: 1000 * (80 / 10) // sqft
+        price: 15,
+        bottleSize: 100, // ml
+        usageRate: 100, // 100ml per 1000sqft
+        coveragePerBottle: 1000 // sqft
     },
     dethatcher: {
         name: 'Foliar Dethatcher',
@@ -105,6 +105,13 @@ const products = {
         packSize: 5, // gram
         usageRate: 2.5, // 2.5g per 1000sqft
         coveragePerPack: 1000 * (5 / 2.5) // sqft
+    },
+    xtraIron: {
+        name: 'Xtra Iron',
+        price: 16,
+        bottleSize: 100, // ml
+        usageRate: 100, // 100ml per 1000sqft
+        coveragePerBottle: 1000 // sqft
     }
 };
 
@@ -217,26 +224,26 @@ function calculateProducts(area) {
 
     results.push({
         name: products.essentialPlus.name,
-        quantity: `${essentialBottlesNeeded} botol x 250ml`,
-        netWeight: `${essentialBottlesNeeded * 250}ml`,
+        quantity: `${essentialBottlesNeeded} botol x 88ml`,
+        netWeight: `${essentialBottlesNeeded * 88}ml`,
         details: 'Cover 3 bulan',
-        unitPrice: 45,
-        price: essentialBottlesNeeded * 45
+        unitPrice: 25,
+        price: essentialBottlesNeeded * 25
     });
-    total += essentialBottlesNeeded * 45;
+    total += essentialBottlesNeeded * 25;
 
     // 4. Bio Nutriens calculation
-    const bioPacksNeeded = Math.ceil(area / products.bioNutriens.coveragePerPack * 3);
+    const bioBottlesNeeded = Math.ceil(area / products.bioNutriens.coveragePerBottle * 3);
 
     results.push({
         name: products.bioNutriens.name,
-        quantity: `${bioPacksNeeded} pack x 80g`,
-        netWeight: `${bioPacksNeeded * 80}g`,
+        quantity: `${bioBottlesNeeded} botol x 100ml`,
+        netWeight: `${bioBottlesNeeded * 100}ml`,
         details: 'Cover 3 bulan',
-        unitPrice: 36,
-        price: bioPacksNeeded * 36
+        unitPrice: 15,
+        price: bioBottlesNeeded * 15
     });
-    total += bioPacksNeeded * 36;
+    total += bioBottlesNeeded * 15;
 
     // 5. Dethatcher calculation
     const dethatcherPacksNeeded = Math.ceil(area / products.dethatcher.coveragePerPack * 3);
@@ -250,6 +257,19 @@ function calculateProducts(area) {
         price: dethatcherPacksNeeded * 25
     });
     total += dethatcherPacksNeeded * 25;
+
+    // 6. Xtra Iron calculation
+    const xtraIronBottlesNeeded = Math.ceil(area / products.xtraIron.coveragePerBottle * 3);
+
+    results.push({
+        name: products.xtraIron.name,
+        quantity: `${xtraIronBottlesNeeded} botol x 100ml`,
+        netWeight: `${xtraIronBottlesNeeded * 100}ml`,
+        details: 'Cover 3 bulan',
+        unitPrice: 16,
+        price: xtraIronBottlesNeeded * 16
+    });
+    total += xtraIronBottlesNeeded * 16;
 
     return { products: results, total: total };
 }

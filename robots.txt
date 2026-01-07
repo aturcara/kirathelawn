@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://thelawn.com.my/sitemap.xml

@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// UI Interaction Logic (Moved from partners.html)
+// UI Interaction Logic (Moved from rakan.html)
 document.addEventListener('DOMContentLoaded', () => {
     // Dynamic Year
     const yearEl = document.getElementById('currentYear');
