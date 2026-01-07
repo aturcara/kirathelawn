@@ -102,9 +102,9 @@ const products = {
     dethatcher: {
         name: 'Foliar Dethatcher',
         price: 25,
-        packSize: 5, // gram
-        usageRate: 2.5, // 2.5g per 1000sqft
-        coveragePerPack: 1000 * (5 / 2.5) // sqft
+        bottleSize: 100, // ml
+        usageRate: 100, // 100ml per 1000sqft
+        coveragePerBottle: 1000 // sqft
     },
     xtraIron: {
         name: 'Xtra Iron',
@@ -246,17 +246,17 @@ function calculateProducts(area) {
     total += bioBottlesNeeded * 15;
 
     // 5. Dethatcher calculation
-    const dethatcherPacksNeeded = Math.ceil(area / products.dethatcher.coveragePerPack * 3);
+    const dethatcherBottlesNeeded = Math.ceil(area / products.dethatcher.coveragePerBottle * 3);
 
     results.push({
         name: products.dethatcher.name,
-        quantity: `${dethatcherPacksNeeded} pack x 5g`,
-        netWeight: `${dethatcherPacksNeeded * 5}g`,
+        quantity: `${dethatcherBottlesNeeded} botol x 100ml`,
+        netWeight: `${dethatcherBottlesNeeded * 100}ml`,
         details: 'Cover 3 bulan',
         unitPrice: 25,
-        price: dethatcherPacksNeeded * 25
+        price: dethatcherBottlesNeeded * 25
     });
-    total += dethatcherPacksNeeded * 25;
+    total += dethatcherBottlesNeeded * 25;
 
     // 6. Xtra Iron calculation
     const xtraIronBottlesNeeded = Math.ceil(area / products.xtraIron.coveragePerBottle * 3);
