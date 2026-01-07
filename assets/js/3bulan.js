@@ -432,7 +432,7 @@ function submitOrder(event) {
     });
 
     whatsappMessage += `*Jumlah Keseluruhan: RM${formatNumber(results.total.toFixed(2))}*\n`;
-    whatsappMessage += `(Penghantaran percuma Semenanjung Malaysia)\n\n`;
+    whatsappMessage += `(Penghantaran percuma Semenanjung Malaysia untuk laman > 500sqft sahaja)\n\n`;
     whatsappMessage += `Saya ingin membuat pesanan untuk set ini. Menantikan maklum balas anda.`;
 
     // Track Meta Pixel Lead event with order value
