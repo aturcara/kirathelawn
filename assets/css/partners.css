@@ -2,33 +2,22 @@
 /* Specific styles for partners page */
 .partners-hero {
     background: linear-gradient(135deg, var(--teal-primary) 0%, var(--teal-dark) 100%);
-    padding: 8rem 0 4rem;
+    padding: 8rem 0 3rem;
     text-align: center;
     color: var(--white);
-    margin-bottom: 0;
+    margin-bottom: 2rem;
     position: relative;
     overflow: hidden;
 }
 
-.partners-hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('../svg/bg1.svg') no-repeat top right/30%;
-    opacity: 0.1;
-}
-
 .partners-hero h1 {
-    font-size: var(--text-hero);
-    margin-bottom: 1.5rem;
+    font-size: var(--text-h2);
+    margin-bottom: 1rem;
 }
 
 .partners-hero p {
-    font-size: 1.25rem;
-    max-width: 700px;
+    font-size: 1.125rem;
+    max-width: 600px;
     margin: 0 auto;
     opacity: 0.9;
 }
@@ -249,7 +238,6 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-    .partners-hero h1 { font-size: 2.5rem; }
     
     .malaysia-map-wrapper {
         padding: 1rem;
