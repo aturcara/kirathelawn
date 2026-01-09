@@ -684,8 +684,7 @@
     <section class="video-section">
     <div class="video-wrapper">
         <iframe
-        class="lazy-video"
-        data-src="https://www.youtube.com/embed/82CHUG0mnPI?autoplay=1&mute=1&controls=0&rel=0&modestbranding=1&playsinline=1&showinfo=0&loop=1&playlist=82CHUG0mnPI"
+        src="https://www.youtube.com/embed/82CHUG0mnPI?autoplay=1&mute=1&controls=0&rel=0&modestbranding=1&playsinline=1&showinfo=0&loop=1&playlist=82CHUG0mnPI"
         title="TheLawn - Professional Lawn Care Services"
         frameborder="0"
         allow="autoplay; encrypted-media; picture-in-picture"
@@ -1019,27 +1018,5 @@
         </svg>
     </button>
     <script src="assets/js/script.js"></script>
-    <script src="assets/js/video-lazyload.js"></script>
-    <script>
-        // Dynamic Year
-        const yearSpan = document.getElementById('currentYear');
-        if(yearSpan) {
-            yearSpan.textContent = new Date().getFullYear();
-        }
-
-        // Back to top button
-        const backToTop = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTop.classList.add('show');
-            } else {
-                backToTop.classList.remove('show');
-            }
-        });
-
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    </script>
 </body>
 </html>
